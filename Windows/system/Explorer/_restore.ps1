@@ -90,8 +90,6 @@ function Set-ExplorerSetting {
   }
 }
 
-# https://www.tenforums.com/tutorials/101852-enable-disable-timeline-windows-10-a.html
-# https://www.tenforums.com/tutorials/110063-enable-disable-sync-activities-pc-cloud-windows-10-a.html
 
 # setting Explorer
 Set-ExplorerPlacement -UI $config.UI

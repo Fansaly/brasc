@@ -12,7 +12,6 @@ set windowsDir=%masterDir%\Windows
 set argument=%~1
 
 if /i "%argument%" == "/b" (
-  call :PERMISSION
   powershell -ExecutionPolicy RemoteSigned -File "%windowsDir%\_backup.ps1"
 ) else if /i "%argument%" == "/r" (
   call :PERMISSION
