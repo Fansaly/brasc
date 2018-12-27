@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# export LC_COLLATE="zh_CN.UTF-8"
+test -d "/mnt/e/Projects" && cd "/mnt/e/Projects"
