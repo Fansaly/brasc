@@ -29,9 +29,9 @@ git clone https://github.com/riywo/anyenv.git "$anyenv" && {
   mkdir -p "$anyenv/plugins"
   git clone https://github.com/znz/anyenv-update.git "$anyenv/plugins/anyenv-update"
 
-  $anyenv/bin/anyenv install ndenv
+  "$anyenv/bin/anyenv" install ndenv
 
-  find $anyenv -exec chmod go-w {} +
+  chmod -R go-w "$anyenv"
 
   return 5 &>/dev/null || exit 5
 }

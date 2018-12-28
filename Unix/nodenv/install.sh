@@ -30,7 +30,7 @@ git clone https://github.com/nodenv/nodenv.git "$nodenv" && {
   git clone https://github.com/nodenv/node-build.git "$nodenv/plugins/node-build"
   git clone https://github.com/nodenv/nodenv-update.git "$nodenv/plugins/nodenv-update"
 
-  find $nodenv -exec chmod go-w {} +
+  chmod -R go-w "$nodenv"
 
   return 5 &>/dev/null || exit 5
 }

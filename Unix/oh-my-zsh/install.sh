@@ -16,8 +16,8 @@ if [[ ! -d "$ZSH" ]]; then
     return 1 &>/dev/null || exit 1
   }
 
-  find "$ZSH" -exec chmod go-w {} +
-  cp "$ZSH"/templates/zshrc.zsh-template "$zshrc"
+  chmod -R go-w "$ZSH"
+  cp "$ZSH/templates/zshrc.zsh-template" "$zshrc"
 
   # switch to zsh
   CURRENT_SHELL=$(expr "$SHELL" : '.*/\(.*\)')
