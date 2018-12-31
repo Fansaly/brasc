@@ -3,7 +3,7 @@
 currentDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  sshDIR="$currentDIR/../../macOS/.ssh"
+  sshDIR="$currentDIR/../../macOS/system/.ssh"
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
   sshDIR="$currentDIR/../../Ubuntu/.ssh"
 fi

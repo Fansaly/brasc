@@ -3,7 +3,7 @@
 currentDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  fileDIR="$currentDIR/../../macOS/profile"
+  fileDIR="$currentDIR/../../macOS/system/profile"
   profile=~/.bash_profile
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
   fileDIR="$currentDIR/../../Ubuntu/profile"
