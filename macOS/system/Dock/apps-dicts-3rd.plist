@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Google Chrome</key>
+    <dict>
+        <key>tile-data</key>
+        <dict>
+            <key>bundle-identifier</key>
+            <string>com.google.Chrome</string>
+            <key>dock-extra</key>
+            <false/>
+            <key>file-data</key>
+            <dict>
+                <key>_CFURLString</key>
+                <string>file:///Applications/Google%20Chrome.app/</string>
+                <key>_CFURLStringType</key>
+                <integer>15</integer>
+            </dict>
+            <key>file-label</key>
+            <string>Google Chrome</string>
+            <key>file-type</key>
+            <integer>41</integer>
+        </dict>
+        <key>tile-type</key>
+        <string>file-tile</string>
+    </dict>
+    <key>Sublime Text</key>
+    <dict>
+        <key>tile-data</key>
+        <dict>
+            <key>bundle-identifier</key>
+            <string>com.sublimetext.3</string>
+            <key>dock-extra</key>
+            <false/>
+            <key>file-data</key>
+            <dict>
+                <key>_CFURLString</key>
+                <string>file:///Applications/Sublime%20Text.app/</string>
+                <key>_CFURLStringType</key>
+                <integer>15</integer>
+            </dict>
+            <key>file-label</key>
+            <string>Sublime Text</string>
+            <key>file-type</key>
+            <integer>41</integer>
+        </dict>
+        <key>tile-type</key>
+        <string>file-tile</string>
+    </dict>
+</dict>
+</plist>

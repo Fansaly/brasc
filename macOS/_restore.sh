@@ -27,6 +27,9 @@ OhMyZshCode=$?
 ECHO "setting" "Dashboard and Hot Corners"
 source "$systemDIR/MissionControl/_restore.sh" --norestart
 
+ECHO "setting" "Dock, Dock's persistent apps, etc"
+source "$systemDIR/Dock/_restore.sh" --norestart
+
 killall Dock
 
 
