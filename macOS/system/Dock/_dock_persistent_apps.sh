@@ -46,26 +46,30 @@ for (( i = 0; i < ${#apps[@]}; i++ )); do
 
   # app Dock dict of apple apps
   dict=$(echo "$dictsApple" | plutil -extract "$app" xml1 -o - -)
+
   if [[ $? -ne 0 ]]; then
     # app Dock dict of 3rd apps
     dict=$(echo "$dicts3rd" | plutil -extract "$app" xml1 -o - -)
+
+    if [[ $? -ne 0 ]]; then
+      echo -e "  \033[0;35m$app\033[0;33m Dock dict\033[0m doesn't exists."
+      continue
+    fi
   fi
 
-  if [[ $? -ne 0 ]]; then
-    echo -e "  \033[0;35m$app\033[0;33m Dock dict\033[0m doesn't exists."
-    continue
-  fi
-
-  # app install directory
-  appDIR=$(urldecode "$( \
+  # app address
+  target=$(urldecode "$( \
     echo "$dict" | \
     plutil -extract "tile-data.file-data._CFURLString" xml1 -o - - | \
     plutil -p - | \
-    sed -e 's/"//g' | \
-    sed -E 's/^file:\/\/(.*)$/\1/' \
+    sed -e 's/"//g' \
   )" )
 
-  if [[ ! -d "$appDIR" ]]; then
+  re='^(file|(http(s)?)):\/\/(.*)$'
+  protocol=$(echo "$target" | sed -E "s/$re/\1/")
+  app_path=$(echo "$target" | sed -E "s/$re/\4/")
+
+  if [[ "$protocol" == "file" && ! -d "$app_path" ]]; then
     echo -e "  \033[0;35m$app\033[0;33m isn't installed.\033[0m"
     continue
   fi
