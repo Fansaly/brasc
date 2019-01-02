@@ -23,6 +23,13 @@ ECHO "install" "oh-my-zsh"
 source "$unixDIR/oh-my-zsh/install.sh"
 OhMyZshCode=$?
 
+
+ECHO "setting" "Dashboard and Hot Corners"
+source "$systemDIR/MissionControl/_restore.sh" --norestart
+
+killall Dock
+
+
 ECHO "setting" "terminal"
 source "$systemDIR/terminal/_restore.sh"
 
