@@ -48,6 +48,37 @@ newXmlCtx=$(irXml "autohide" -bool NO "$newXmlCtx")
 # Show indicators for open applications
 newXmlCtx=$(irXml "show-process-indicators" -bool YES "$newXmlCtx")
 
+
+# Dashboard
+# ---------
+# 1 => Off
+# 2 => As Space
+# 3 => As Overlay
+defaults write com.apple.dashboard "dashboard-enabled-state" -integer 3
+
+# Hot Corners
+# ---------------------------
+# Mission Control      =>  2
+# Application Windows  =>  3
+# Desktop              =>  4
+# Dashboard            =>  7
+# Notification Center  => 12
+# ---------------------------
+# Launchpad            => 11
+# ---------------------------
+# Start Screen Saver   =>  5
+# Disable Screen Saver =>  6
+# ---------------------------
+# Put Display to Sleep => 10
+# ---------------------------
+# -                    =>  1
+# ---------------------------
+# newXmlCtx=$(irXml "wvous-tl-corner" -integer 0 "$newXmlCtx")
+# newXmlCtx=$(irXml "wvous-tr-corner" -integer 0 "$newXmlCtx")
+newXmlCtx=$(irXml "wvous-bl-corner" -integer 11 "$newXmlCtx")
+newXmlCtx=$(irXml "wvous-br-corner" -integer 4 "$newXmlCtx")
+
+
 if [[ "$newXmlCtx" != "$orgXmlCtx" ]]; then
   echo "$newXmlCtx" | plutil -convert binary1 -o "$plist" -
 fi

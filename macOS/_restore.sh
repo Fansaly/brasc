@@ -24,10 +24,7 @@ source "$unixDIR/oh-my-zsh/install.sh"
 OhMyZshCode=$?
 
 
-ECHO "setting" "Dashboard and Hot Corners"
-source "$systemDIR/MissionControl/_restore.sh" --norestart
-
-ECHO "setting" "Dock, Dock's persistent apps, etc"
+ECHO "setting" "Dock, Dashboard and Hot Corners"
 source "$systemDIR/Dock/_restore.sh" --norestart
 
 killall Dock
