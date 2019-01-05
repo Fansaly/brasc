@@ -33,8 +33,8 @@ source "$systemDIR/Dock/_restore.sh" --norestart
 killall Dock
 
 
-ECHO "setting" "terminal"
-source "$systemDIR/terminal/_restore.sh"
+ECHO "setting" "Terminal"
+source "$systemDIR/Terminal/_restore.sh"
 
 ECHO "config" "profile"
 source "$unixDIR/profile/_restore.sh"
