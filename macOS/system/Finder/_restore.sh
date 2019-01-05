@@ -38,10 +38,8 @@ newXmlCtx=$(irXml "DesktopViewSettings.IconViewSettings.arrangeBy" -string "grid
 if [[ "$newXmlCtx" != "$orgXmlCtx" ]]; then
   # restore Finder
   echo "$newXmlCtx" | plutil -convert binary1 -o "$plist" -
+
+  [[ "$1" != "--norestart" ]] && killall Finder
 fi
 
 unset newXmlCtx orgXmlCtx
-
-if [[ "$1" != "--norestart" ]]; then
-  killall Finder
-fi
