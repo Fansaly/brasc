@@ -1,19 +1,8 @@
 #!/bin/bash
 #
 # Dock - persistent apps
-
-# https://www.rosettacode.org/wiki/URL_decoding
-urldecode() { local u="${1//+/ }"; printf '%b' "${u//%/\\x}"; }
-
-currentDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-
-domain=com.apple.dock
-prefDIR=~/Library/Preferences
-plist=$prefDIR/$domain.plist
-
-
 # Custom Dock's persistent apps
-# -----------------------------
+
 # persistent apps ordered list
 apps=(
   "Siri"
@@ -36,6 +25,15 @@ apps=(
   "Terminal"
   "Sublime Text"
 )
+
+currentDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+scriptsDIR=$currentDIR/../../.scripts
+
+source "$scriptsDIR/urldecode.sh"
+
+prefDIR=~/Library/Preferences
+domain=com.apple.dock
+plist=$prefDIR/$domain.plist
 
 dictsApple=$(cat "$currentDIR/apps-dicts-apple.plist")
 dicts3rd=$(cat "$currentDIR/apps-dicts-3rd.plist")
@@ -81,7 +79,6 @@ done
 # extract and save to Dock Preferences
 dicts=$(echo "$dicts" | plutil -extract "dicts" xml1 -o - -)
 plutil -replace "persistent-apps" -xml "$dicts" "$plist"
-
 
 if [[ "$1" != "--norestart" ]]; then
   killall Dock

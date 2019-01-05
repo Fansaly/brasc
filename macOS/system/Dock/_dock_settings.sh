@@ -2,14 +2,26 @@
 #
 # Dock - settings
 
+currentDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+scriptsDIR=$currentDIR/../../.scripts
+
+source "$scriptsDIR/irXml.sh"
+
+prefDIR=~/Library/Preferences
+domain=com.apple.dock
+plist=$prefDIR/$domain.plist
+
+orgXmlCtx=$(plutil -convert xml1 -o - "$plist")
+newXmlCtx="$orgXmlCtx"
+
 # Position
-defaults write com.apple.dock "orientation" -string "bottom"
+newXmlCtx=$(irXml "orientation" -string "bottom" "$newXmlCtx")
 
 # Minimize windows
 # ---------------------
 # genie => Genie effect
 # scale => Scale effect
-defaults write com.apple.dock "mineffect" -string "genie"
+newXmlCtx=$(irXml "mineffect" -string "genie" "$newXmlCtx")
 
 # Preder tabs when opening documents
 # ----------------------------------
@@ -25,16 +37,22 @@ defaults write -globalDomain "AppleWindowTabbingMode" -string "fullscreen"
 defaults write -globalDomain "AppleActionOnDoubleClick" -string "Maximize"
 
 # Minimize windows into application icon
-defaults write com.apple.dock "minimize-to-application" -boolean YES
+newXmlCtx=$(irXml "minimize-to-application" -bool YES "$newXmlCtx")
 
 # Animate opening applications
-defaults write com.apple.dock "launchanim" -boolean YES
+newXmlCtx=$(irXml "launchanim" -bool YES "$newXmlCtx")
 
 # Automatically hide and show Dock
-defaults write com.apple.dock "autohide" -boolean NO
+newXmlCtx=$(irXml "autohide" -bool NO "$newXmlCtx")
 
 # Show indicators for open applications
-defaults write com.apple.dock "show-process-indicators" -boolean YES
+newXmlCtx=$(irXml "show-process-indicators" -bool YES "$newXmlCtx")
+
+if [[ "$newXmlCtx" != "$orgXmlCtx" ]]; then
+  echo "$newXmlCtx" | plutil -convert binary1 -o "$plist" -
+fi
+
+unset newXmlCtx orgXmlCtx
 
 if [[ "$1" != "--norestart" ]]; then
   killall Dock
