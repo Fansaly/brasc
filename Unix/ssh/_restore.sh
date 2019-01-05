@@ -9,6 +9,7 @@ elif [[ "$OSTYPE" == "linux-gnu" ]]; then
 fi
 
 if [[ ! -f "${sshDIR}/id_rsa" ]]; then
+  echo "\033[0;33mssh key \033[0;31mdoesn't exists.\033[0m"
   return 1 &>/dev/null || exit 1
 fi
 

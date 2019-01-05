@@ -3,7 +3,7 @@
 # install nodenv
 
 if [[ -n $(command -v nodenv) || -d "$HOME/.nodenv" ]]; then
-  return 1 &>/dev/null || exit 1
+  return 0 &>/dev/null || exit 0
 fi
 
 

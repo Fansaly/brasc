@@ -11,7 +11,7 @@ elif [[ "$OSTYPE" == "linux-gnu" ]]; then
 fi
 
 if [[ ! -f "${fileDIR}/._profile_" ]]; then
-  return 1 &>/dev/null || exit 1
+  return 0 &>/dev/null || exit 0
 fi
 
 cp "${fileDIR}/._profile_" ~/

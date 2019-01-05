@@ -30,6 +30,7 @@ fi
 
 
 if [[ ! -f "$zshrc" ]]; then
+  echo "~/\033[0;33m.zshrc \033[0;31mdoesn't exists.\033[0m"
   return 1 &>/dev/null || exit 1
 fi
 

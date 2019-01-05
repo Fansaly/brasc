@@ -3,7 +3,7 @@
 # install anyenv and ndenv
 
 if [[ -n $(command -v anyenv) || -d "$HOME/.anyenv" ]]; then
-  return 1 &>/dev/null || exit 1
+  return 0 &>/dev/null || exit 0
 fi
 
 
