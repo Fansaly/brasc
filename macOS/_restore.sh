@@ -37,6 +37,9 @@ source "$systemDIR/Dock/_restore.sh" --norestart
 
 killall Dock
 
+ECHO "setting" "Finder"
+source "$systemDIR/Finder/_restore.sh"
+
 
 ECHO "setting" "Terminal"
 source "$systemDIR/Terminal/_restore.sh"
