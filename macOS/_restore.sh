@@ -24,6 +24,14 @@ source "$unixDIR/oh-my-zsh/install.sh"
 OhMyZshCode=$?
 
 
+ECHO "setting" "Clock display style"
+source "$systemDIR/Clock/_restore.sh" --norestart
+
+ECHO "setting" "System menu extras"
+source "$systemDIR/SysMenuExtras/_restore.sh" --norestart
+
+killall SystemUIServer
+
 ECHO "setting" "Dock, Dashboard and Hot Corners"
 source "$systemDIR/Dock/_restore.sh" --norestart
 
