@@ -38,10 +38,9 @@ plist=$prefDIR/$domain.plist
 dictsApple=$(cat "$currentDIR/apps-dicts-apple.plist")
 dicts3rd=$(cat "$currentDIR/apps-dicts-3rd.plist")
 dicts='<dict><key>dicts</key><array/></dict>'
+idx=0
 
-for (( i = 0; i < ${#apps[@]}; i++ )); do
-  app=${apps[$i]}
-
+for app in "${apps[@]}"; do
   # app Dock dict of apple apps
   dict=$(echo "$dictsApple" | plutil -extract "$app" xml1 -o - -)
 
@@ -73,7 +72,8 @@ for (( i = 0; i < ${#apps[@]}; i++ )); do
   fi
 
   # merge
-  dicts=$(echo "$dicts" | plutil -insert "dicts.$i" -xml "$dict" -o - -)
+  dicts=$(echo "$dicts" | plutil -insert "dicts.$idx" -xml "$dict" -o - -)
+  ((idx++))
 done
 
 # extract and save to Dock Preferences
