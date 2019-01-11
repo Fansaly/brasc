@@ -6,7 +6,7 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[{.editorconfig,.gitignore,/*.sh,macos/*,Ubuntu/*,Unix/*}]
+[{.editorconfig,.gitignore,/*.sh,macOS/*,Ubuntu/*,Unix/*}]
 charset = utf-8
 end_of_line = lf
 
