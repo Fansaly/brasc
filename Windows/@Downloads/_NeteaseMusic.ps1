@@ -7,14 +7,9 @@ Param (
 
 $URI = 'https://music.163.com/api/pc/download/latest'
 
-try {
-  Invoke-WebRequest -Uri $URI -UseBasicParsing
-} catch {
-  $Response = $_.Exception.Response
-  $URI = $Response.ResponseUri.OriginalString.Split(',')[1]
-}
-
-$OutFile = $URI | Split-Path -Leaf
+$Response = curl.exe -fIs "$URI"
+$Location = $Response -match '^Location:\s*http(s)?:\/\/.*$' -replace 'Location:\s*'
+$OutFile = $Location | Split-Path -Leaf
 
 if ($UseWebRequest) {
   Invoke-WebRequest -Uri $URI -OutFile $OutFile -UseBasicParsing
