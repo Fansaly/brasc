@@ -6,6 +6,10 @@
       Path = 'C:\Program Files\Realtek\Audio\HDA\RtkNGUI64.exe'
     },
     @{
+      Name = 'Registry Workshop'
+      Path = 'D:\Program Files\Registry Workshop\RegWorkshopX64.exe'
+    },
+    @{
       Name = 'Notepad++'
       Path = 'D:\Program Files\Notepad++\notepad++.exe'
     },
