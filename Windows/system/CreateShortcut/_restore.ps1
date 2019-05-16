@@ -19,12 +19,22 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 . "${PSScriptsPath}\New-Shortcut.ps1"
 
 
-$Location = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs"
+$configFile = "${currentPath}\config.psd1"
 
-New-Shortcut -Path 'C:\Program Files\Realtek\Audio\HDA\RtkNGUI64.exe' -Location $Location -Name 'Realtek 高清晰音频管理器'
-New-Shortcut -Path 'D:\Program Files\Notepad++\notepad++.exe'         -Location $Location -Name 'Notepad++'
-New-Shortcut -Path 'D:\Program Files\Beyond Compare\BCompare.exe'     -Location $Location -Name 'Beyond Compare'
-New-Shortcut -Path 'D:\Program Files\Tencent\WeChat\WeChat.exe'       -Location $Location -Name '微信'
-New-Shortcut -Path 'D:\Program Files\Thunder\Program\Thunder.exe'     -Location $Location -Name '迅雷'
-New-Shortcut -Path 'D:\Program Files\Steam\Steam.exe'                 -Location $Location -Name 'Steam'
-New-Shortcut -Path 'D:\Program Files\Blizzard\Battle.net\Battle.net Launcher.exe' -Location $Location -Name '暴雪战网'
+if (![IO.File]::Exists($configFile)) { exit }
+
+
+$config = Import-PowerShellDataFile $configFile
+$LinkLocation = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs"
+
+$config.Programs | % {
+  $Path = $_.Path
+  $Name = $_.Name
+  $Location = $_.Location
+
+  if ([String]::IsNullOrEmpty($Location) -or !(Test-Path -Path $Location)) {
+    $Location = $LinkLocation
+  }
+
+  New-Shortcut -Path $Path -Location $Location -Name $Name
+}
