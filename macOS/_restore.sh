@@ -57,6 +57,10 @@ ECHO "config" "ssh key"
 source "$unixDIR/ssh/_restore.sh"
 
 
+ECHO "config" "Sublime Text"
+source "$appsDIR/SublimeText/_restore.sh"
+
+
 echo
 echo -e "\033[0;7m all done. \033[0m"
 echo
