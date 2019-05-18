@@ -9,7 +9,7 @@ cp "$sublime_dir/"*.sublime-project "$config_dir"
 
 
 if [[ ! -d "$sublime_dir/Packages/User" ]]; then
-  exit 0
+  return 0 &>/dev/null || exit 0
 fi
 
 # Preferences, Key Bindings, Settings, etc

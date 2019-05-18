@@ -17,7 +17,7 @@ cp -r "$config_dir/"* "$sublime_dir/"
 package_control_file="Package Control.sublime-package"
 
 if [[ -f "$installed_packages_dir/$package_control_file" ]]; then
-  exit 0
+  return 0 &>/dev/null || exit 0
 fi
 
 package_control_url="https://packagecontrol.io/Package Control.sublime-package"
