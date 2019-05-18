@@ -1,0 +1,32 @@
+{
+	"bootstrapped": true,
+	"channels":
+	[
+		// https://github.com/wbond/package_control/issues/1397#issuecomment-453416502
+		"https://erhan.in/channel_v3.json"
+	],
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Babel",
+		"ConvertToUTF8",
+		"CSS Format",
+		"EditorConfig",
+		"Emmet",
+		"FileDiffs",
+		"IMESupport",
+		"Material Theme",
+		"Package Control",
+		"PowerShell",
+		"ReactJS",
+		"Stylus",
+		"Stylus-Snippets",
+		"TrailingSpaces",
+		"TypeScript Syntax",
+		"TypescriptCompletion",
+		"Vue Syntax Highlight",
+		"Vuejs Snippets"
+	]
+}

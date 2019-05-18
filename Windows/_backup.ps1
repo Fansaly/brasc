@@ -37,10 +37,15 @@ if (![String]::IsNullOrEmpty($PSScriptRoot)) {
 }
 
 $systemPath = "$currentPath\system"
+$appsPath   = "$currentPath\apps"
 
 if (!(Test-Path -Path $systemPath)) {
   Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
   Write-Host "``system' directory doesn't exist." -ForegroundColor Yellow
+  exit
+} elseif (!(Test-Path -Path $appsPath)) {
+  Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
+  Write-Host "``apps' directory doesn't exist." -ForegroundColor Yellow
   exit
 }
 
@@ -49,6 +54,7 @@ if (!(Test-Path -Path $systemPath)) {
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 
 
+# system configuration
 Write-Tips 'StartLayout'
 . "${systemPath}\StartLayout\_backup.ps1"
 
@@ -60,3 +66,7 @@ Write-Tips 'Windows PowerShell Shortcut'
 
 Write-Tips 'TaskManager'
 . "${systemPath}\TaskManager\_backup.ps1"
+
+# apps configuration
+Write-Tips 'Sublime Text'
+. "${appsPath}\SublimeText\_backup.ps1"
