@@ -13,6 +13,7 @@
 		"Babel",
 		"ConvertToUTF8",
 		"CSS Format",
+		"CSS Snippets",
 		"EditorConfig",
 		"Emmet",
 		"FileDiffs",
@@ -24,8 +25,10 @@
 		"Stylus",
 		"Stylus-Snippets",
 		"TrailingSpaces",
+		"TypeScript",
 		"TypeScript Syntax",
 		"TypescriptCompletion",
+		"VBScript",
 		"Vue Syntax Highlight",
 		"Vuejs Snippets"
 	]
