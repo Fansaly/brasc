@@ -19,13 +19,13 @@ function Write-Tips {
   $global:WriteOnceTips = $True
 
   if ($Flag) {
-    Write-Host "`n°§ " -ForegroundColor Gray -NoNewLine
+    Write-Host "`n°§" -ForegroundColor Gray -NoNewLine
   } else {
-    Write-Host "°§ " -ForegroundColor Gray -NoNewLine
+    Write-Host "°§" -ForegroundColor Gray -NoNewLine
   }
 
-  Write-Host " downloading " -ForegroundColor Magenta -BackgroundColor Gray -NoNewLine
-  Write-Host " ${Tips}" -ForegroundColor White -NoNewLine
+  Write-Host " downloading " -ForegroundColor Cyan -NoNewLine
+  Write-Host " ${Tips} " -ForegroundColor Magenta -BackgroundColor Gray -NoNewLine
   Write-Host " ... " -ForegroundColor Gray -NoNewLine
 }
 
@@ -59,6 +59,9 @@ Write-Tips 'Õ¯“◊‘∆“Ù¿÷'
 
 Write-Tips '∞Ÿ∂»Õ¯≈Ã'
 . "${downloadsPath}\_BaiduNetdisk.ps1"
+
+Write-Tips 'Outline Manager'
+. "${downloadsPath}\_OutlineManager.ps1"
 
 Pop-Location
 
