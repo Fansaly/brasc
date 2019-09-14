@@ -7,27 +7,25 @@ cd /d %~dp0
 set masterDir=%~dp0
 if "%masterDir:~-1%" == "\" set masterDir=%masterDir:~0,-1%
 
+set argument=%~1
 set windowsDir=%masterDir%\Windows
 
-set argument=%~1
+if /i "%argument%" == "-b" set backup=1
+if /i "%argument%" == "/b" set backup=1
+if /i "%argument%" == "-r" set restore=1
+if /i "%argument%" == "/r" set restore=1
+if /i "%argument%" == "-d" set download=1
+if /i "%argument%" == "/d" set download=1
 
-if /i "%argument%" == "/b" (
+if defined backup (
   powershell -ExecutionPolicy RemoteSigned -File "%windowsDir%\_backup.ps1"
-) else if /i "%argument%" == "/r" (
+) else if defined restore (
   call :PERMISSION
   powershell -ExecutionPolicy RemoteSigned -File "%windowsDir%\_restore.ps1"
-) else if /i "%argument%" == "/d" (
+) else if defined download (
   powershell -ExecutionPolicy RemoteSigned -File "%windowsDir%\_download.ps1"
 ) else (
-  echo   %~nx0 [/b ^| /r ^| /d]
-  echo.
-  echo   /b    Backup current Windows and Apps configuration.
-  echo.
-  echo   /r    Restore Windows and Apps configuration to current.
-  echo         Requires administrator privileges.
-  echo.
-  echo   /d    Download some applications from internet.
-  echo.
+  call :USAGE
   exit
 )
 
@@ -36,6 +34,19 @@ echo.
 echo [7m all done. [0m
 echo.
 exit
+
+
+:USAGE
+echo   %~nx0 [-b ^| -r ^| -d]
+echo.
+echo   -b    Backup current Windows and Apps configuration.
+echo.
+echo   -r    Restore Windows and Apps configuration to current.
+echo         Requires administrator privileges.
+echo.
+echo   -d    Download some applications from internet.
+echo.
+goto :EOF
 
 
 :PERMISSION
