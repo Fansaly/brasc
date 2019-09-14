@@ -1,4 +1,13 @@
 #!/bin/bash
 
 # export LC_COLLATE="zh_CN.UTF-8"
-test -d "/mnt/e/Projects" && cd "/mnt/e/Projects"
+
+PROJECTS_DIR=/mnt/e/Projects
+
+if [[ -d "${PROJECTS_DIR}" ]]; then
+  cd "${PROJECTS_DIR}"
+fi
+
+if [[ -f "${PROJECTS_DIR}/alias/alias.sh" ]]; then
+  source "${PROJECTS_DIR}/alias/alias.sh"
+fi
