@@ -1,20 +1,17 @@
 %YAML 1.2
 ---
 
-Windows:
-  default: 6
-  mouse: Logitech 403
-  data:
-    - DPI: 1800
-      TrackingSpeed: 8
-    - DPI: 3600
-      TrackingSpeed: 4
+mouse: Logitech 403
+settings:
 
-macOS:
-  default: 5
-  mouse: Logitech 403
-  data:
-    - DPI: 1800
-      TrackingSpeed: 10
-    - DPI: 3600
-      TrackingSpeed: 4
+  Windows:
+    mouse_dpi: 1600
+    tracking_speed:
+      selection: 8
+      default: 6
+
+  macOS:
+    mouse_dpi: 1720
+    tracking_speed:
+      selection: 10
+      default: 5
