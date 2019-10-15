@@ -21,5 +21,4 @@ if (!(Test-Path -Path $regPath)) {
 
   Set-ItemProperty -Path $regPath -Type 'String' -Name 'AutoLoginUser' -Value ''
   Set-ItemProperty -Path $regPath -Type 'String' -Name 'Language'      -Value 'schinese'
-  Set-ItemProperty -Path $regPath -Type 'String' -Name 'SkinV4'        -Value 'Metro for Steam'
 }
