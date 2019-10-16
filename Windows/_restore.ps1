@@ -108,3 +108,6 @@ Write-Tips 'setting', 'Steam'
 
 Write-Tips 'setting', 'BaiduNetdisk'
 . "${appsPath}\BaiduNetdisk\_restore.ps1"
+
+Write-Tips 'setting', 'ASUS apps'
+. "${appsPath}\ASUS\_disable.ps1"
