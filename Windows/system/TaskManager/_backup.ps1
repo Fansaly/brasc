@@ -17,6 +17,8 @@ if (!(Test-Path -Path $computerName)) {
   New-Item -Path $computerName -ItemType Directory | Out-Null
 }
 
+# Get-ItemPropertyValue -Path $regPath -Name 'Preferences'
+# 52 ~ 67 ==> position: left, top, right, bottom
 $regPath = "HKCU\Software\Microsoft\Windows\CurrentVersion\TaskManager"
 $regFile = "${computerName}\${name}.reg"
 
