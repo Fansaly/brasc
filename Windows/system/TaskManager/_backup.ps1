@@ -1,11 +1,7 @@
-if (![String]::IsNullOrEmpty($PSScriptRoot)) {
-  $currentPath = $PSScriptRoot
-} else {
-  $currentPath = (Get-Item -Path './').FullName
-}
+$ScriptFilePath = $PSScriptRoot
 
 $computerName = Get-ItemPropertyValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Computername\Computername' -Name 'Computername'
-$folderName = $currentPath | Split-Path -Leaf
+$folderName = $ScriptFilePath | Split-Path -Leaf
 $name = 'TaskManager'
 
 if ($folderName -ne $name) {
@@ -15,7 +11,7 @@ if ($folderName -ne $name) {
 }
 
 
-Push-Location -Path $currentPath
+Push-Location -Path $ScriptFilePath
 
 if (!(Test-Path -Path $computerName)) {
   New-Item -Path $computerName -ItemType Directory | Out-Null

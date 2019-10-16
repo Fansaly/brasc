@@ -30,24 +30,9 @@ function Write-Tips {
 }
 
 
-if (![String]::IsNullOrEmpty($PSScriptRoot)) {
-  $currentPath = $PSScriptRoot
-} else {
-  $currentPath = (Get-Item -Path './').FullName
-}
-
-$downloadsPath  = "$currentPath\@Downloads"
+$downloadsPath  = "${PSScriptRoot}\@Downloads"
 $downloadToPath = "$HOME\Downloads"
 
-if (!(Test-Path -Path $downloadsPath)) {
-  Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
-  Write-Host "``@Downloads' directory doesn't exist." -ForegroundColor Yellow
-  exit
-}
-
-
-# set PowerShell execution policy and source script
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 
 Push-Location -Path $downloadToPath
 

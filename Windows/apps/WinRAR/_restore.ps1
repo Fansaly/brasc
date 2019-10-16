@@ -1,21 +1,7 @@
-# set current path and scripts lib path
-if (![String]::IsNullOrEmpty($PSScriptRoot)) {
-  $currentPath = $PSScriptRoot
-} else {
-  $currentPath = (Get-Item -Path './').FullName
-}
-
-$PSScriptsPath = (Get-Item -Path $currentPath).Parent.Parent.FullName + '\.PSScripts'
-
-if (!(Test-Path -Path $PSScriptsPath)) {
-  Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
-  Write-Host "PSScripts path doesn't exist." -ForegroundColor Yellow
-  exit
-}
+$ScriptFilePath = $PSScriptRoot
+$PSScriptsPath = (Get-Item -Path $ScriptFilePath).Parent.Parent.FullName + '\.PSScripts'
 
 
-# set PowerShell execution policy and source script
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 . "${PSScriptsPath}\Write-Message.ps1"
 . "${PSScriptsPath}\Confirm-YesOrNo.ps1"
 . "${PSScriptsPath}\Get-ScreenInfo.ps1"
@@ -24,8 +10,8 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 
 $global:screenInfo = Get-ScreenInfo -IsPrimary
 
-$configFileRequire = "${currentPath}\config.$($screenInfo.Resolution).psd1"
-$configFileDefault = "${currentPath}\config.1920x1080.psd1"
+$configFileRequire = "${ScriptFilePath}\config.$($screenInfo.Resolution).psd1"
+$configFileDefault = "${ScriptFilePath}\config.1920x1080.psd1"
 
 if ([IO.File]::Exists($configFileRequire)) {
   $configFile = $configFileRequire

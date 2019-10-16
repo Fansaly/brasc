@@ -1,11 +1,8 @@
-$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-$hasAdmPermissions = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+$PSScriptsPath = (Get-Item -Path $PSScriptRoot).Parent.Parent.FullName + '\.PSScripts'
 
-if (!$hasAdmPermissions) {
-  Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
-  Write-Host "Please run as Administrator." -ForegroundColor Yellow
-  exit
-}
+. "${PSScriptsPath}\Get-PermissionStatus.ps1"
+
+if (!$(Get-PermissionStatus)) { exit }
 
 
 $Path = 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation'

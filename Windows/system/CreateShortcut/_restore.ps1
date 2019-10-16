@@ -1,25 +1,11 @@
-# set current path and scripts lib path
-if (![String]::IsNullOrEmpty($PSScriptRoot)) {
-  $currentPath = $PSScriptRoot
-} else {
-  $currentPath = (Get-Item -Path './').FullName
-}
-
-$PSScriptsPath = (Get-Item -Path $currentPath).Parent.Parent.FullName + '\.PSScripts'
-
-if (!(Test-Path -Path $PSScriptsPath)) {
-  Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
-  Write-Host "PSScripts path doesn't exist." -ForegroundColor Yellow
-  exit
-}
+$ScriptFilePath = $PSScriptRoot
+$PSScriptsPath = (Get-Item -Path $ScriptFilePath).Parent.Parent.FullName + '\.PSScripts'
 
 
-# set PowerShell execution policy and source script
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 . "${PSScriptsPath}\New-Shortcut.ps1"
 
 
-$configFile = "${currentPath}\config.psd1"
+$configFile = "${ScriptFilePath}\config.psd1"
 
 if (![IO.File]::Exists($configFile)) { exit }
 

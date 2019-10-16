@@ -30,28 +30,8 @@ function Write-Tips {
 }
 
 
-if (![String]::IsNullOrEmpty($PSScriptRoot)) {
-  $currentPath = $PSScriptRoot
-} else {
-  $currentPath = (Get-Item -Path './').FullName
-}
-
-$systemPath = "$currentPath\system"
-$appsPath   = "$currentPath\apps"
-
-if (!(Test-Path -Path $systemPath)) {
-  Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
-  Write-Host "``system' directory doesn't exist." -ForegroundColor Yellow
-  exit
-} elseif (!(Test-Path -Path $appsPath)) {
-  Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
-  Write-Host "``apps' directory doesn't exist." -ForegroundColor Yellow
-  exit
-}
-
-
-# set PowerShell execution policy and source script
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+$systemPath = "${PSScriptRoot}\system"
+$appsPath   = "${PSScriptRoot}\apps"
 
 
 # system configuration

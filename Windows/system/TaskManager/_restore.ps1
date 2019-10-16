@@ -1,32 +1,22 @@
-if (![String]::IsNullOrEmpty($PSScriptRoot)) {
-  $currentPath = $PSScriptRoot
-} else {
-  $currentPath = (Get-Item -Path './').FullName
-}
-
-$PSScriptsPath = (Get-Item -Path $currentPath).Parent.Parent.FullName + '\.PSScripts'
+$ScriptFilePath = $PSScriptRoot
+$PSScriptsPath = (Get-Item -Path $ScriptFilePath).Parent.Parent.FullName + '\.PSScripts'
 
 $computerName = Get-ItemPropertyValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Computername\Computername' -Name 'Computername'
-$folderName = $currentPath | Split-Path -Leaf
+$folderName = $ScriptFilePath | Split-Path -Leaf
 $name = 'TaskManager'
+
 
 if ($folderName -ne $name) {
   Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
   Write-Host "``${name}' isn't name of current directory." -ForegroundColor Yellow
   exit
-} elseif (!(Test-Path -Path "${currentPath}\${computerName}")) {
+} elseif (!(Test-Path -Path "${ScriptFilePath}\${computerName}")) {
   Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
   Write-Host "No data of ``${computerName}' computer." -ForegroundColor Yellow
-  exit
-} elseif (!(Test-Path -Path $PSScriptsPath)) {
-  Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
-  Write-Host "PSScripts path doesn't exist." -ForegroundColor Yellow
   exit
 }
 
 
-# set PowerShell execution policy and source script
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 . "${PSScriptsPath}\Write-Message.ps1"
 . "${PSScriptsPath}\Confirm-YesOrNo.ps1"
 
@@ -43,11 +33,11 @@ if ($status) {
   }
 }
 
-Push-Location -Path $currentPath
+Push-Location -Path $ScriptFilePath
 
 $regFile = "${computerName}\${name}.reg"
 
-if ([IO.File]::Exists("${currentPath}\${regFile}")) {
+if ([IO.File]::Exists("${ScriptFilePath}\${regFile}")) {
   REG IMPORT $regFile 2>&1 | Out-Null
 } else {
   Write-Host "`n  - " -ForegroundColor Gray -NoNewLine

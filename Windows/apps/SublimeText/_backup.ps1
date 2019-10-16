@@ -1,10 +1,4 @@
-if (![String]::IsNullOrEmpty($PSScriptRoot)) {
-  $currentPath = $PSScriptRoot
-} else {
-  $currentPath = (Get-Item -Path './').FullName
-}
-
-$configPath = "${currentPath}\config"
+$configPath = "${PSScriptRoot}\config"
 $installPath = 'D:\Program Files\Sublime Text 3'
 $packagesUserPath = "${installPath}\Data\Packages\User"
 

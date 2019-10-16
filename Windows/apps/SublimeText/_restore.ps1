@@ -1,30 +1,12 @@
-$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-$hasAdmPermissions = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+$ScriptFilePath = $PSScriptRoot
+$PSScriptsPath = (Get-Item -Path $ScriptFilePath).Parent.Parent.FullName + '\.PSScripts'
 
-if (!$hasAdmPermissions) {
-  Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
-  Write-Host "Please run as Administrator." -ForegroundColor Yellow
-  exit
-}
 
-# set current path and scripts lib path
-if (![String]::IsNullOrEmpty($PSScriptRoot)) {
-  $currentPath = $PSScriptRoot
-} else {
-  $currentPath = (Get-Item -Path './').FullName
-}
-
-$PSScriptsPath = (Get-Item -Path $currentPath).Parent.Parent.FullName + '\.PSScripts'
-
-if (!(Test-Path -Path $PSScriptsPath)) {
-  Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
-  Write-Host "PSScripts path doesn't exist." -ForegroundColor Yellow
-  exit
-}
-
-# set PowerShell execution policy and source script
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+. "${PSScriptsPath}\Get-PermissionStatus.ps1"
 . "${PSScriptsPath}\Invoke-PinToTaskbar.ps1"
+
+
+if (!$(Get-PermissionStatus)) { exit }
 
 
 $installPath = 'D:\Program Files\Sublime Text 3'
@@ -49,7 +31,7 @@ Set-ItemProperty -LiteralPath $sublimeRegPath -Type 'String' -Name 'Icon'      -
 Set-ItemProperty -LiteralPath "${sublimeRegPath}\command" -Type 'String' -Name '(Default)' -Value "$sublimeApp `"%1`""
 
 # Preferences, Key Bindings, Settings, etc
-Copy-Item -Path "$currentPath\config\*" -Destination "$installPath\" -Recurse -Force
+Copy-Item -Path "$ScriptFilePath\config\*" -Destination "$installPath\" -Recurse -Force
 
 # Package Control
 $packageControlFile = 'Package Control.sublime-package'
