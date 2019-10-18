@@ -1,6 +1,9 @@
 $PSScriptsPath = (Get-Item -Path $PSScriptRoot).Parent.Parent.FullName + '\.PSScripts'
 
+
 . "${PSScriptsPath}\Get-PermissionStatus.ps1"
+. "${PSScriptsPath}\Set-StartupItem.ps1"
+
 
 if (!$(Get-PermissionStatus)) { exit }
 
@@ -21,11 +24,4 @@ Get-Item -Path $friendlyPath `
 }
 
 # remove Baidu App or Service from Startup
-$startupPath = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run'
-Get-Item -Path $startupPath `
-| Select-Object -ExpandProperty Property `
-| % {
-  if ($_ -match 'Baidu') {
-    Remove-ItemProperty -Path $startupPath -Name $_
-  }
-}
+Set-StartupItem -Action 'Remove' -Path 'HKCU' -Name 'Baidu'

@@ -1,3 +1,8 @@
+$PSScriptsPath = (Get-Item -Path $PSScriptRoot).Parent.Parent.FullName + '\.PSScripts'
+
+. "${PSScriptsPath}\Set-StartupItem.ps1"
+
+
 $ssApp = 'D:\Program Files\Shadowsocks\Shadowsocks.exe'
 
 if (![IO.File]::Exists($ssApp)) {
@@ -7,15 +12,7 @@ if (![IO.File]::Exists($ssApp)) {
 }
 
 
-$startupPath = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run'
-
-$isAutoRun = Get-Item -Path $startupPath `
-| Select-Object -ExpandProperty Property `
-| ? { (Get-ItemPropertyValue -Path $startupPath -Name $_) -eq $ssApp }
-
-if (!$isAutoRun) {
-  Set-ItemProperty -Path $startupPath -Type 'String' -Name 'Shadowsocks' -Value $ssApp
-}
+Set-StartupItem -Action 'Create' -Path 'HKCU' -Name 'Shadowsocks' -Value $ssApp
 
 $isRunning = Get-Process | Where-Object ProcessName -Match 'Shadowsocks'
 

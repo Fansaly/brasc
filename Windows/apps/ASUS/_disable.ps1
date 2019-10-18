@@ -2,8 +2,8 @@ $PSScriptsPath = (Get-Item -Path $PSScriptRoot).Parent.Parent.FullName + '\.PSSc
 
 
 . "${PSScriptsPath}\Disable-ScheduledTaskItem.ps1"
-. "${PSScriptsPath}\Disable-StartupItem.ps1"
+. "${PSScriptsPath}\Set-StartupItem.ps1"
 
 
 Disable-ScheduledTaskItem -TaskPath '\ASUS\' -TaskName 'Ez Update'
-Disable-StartupItem -Path 'HKLM' -Name 'Sonic Studio'
+Set-StartupItem -Action 'Disable' -Path 'HKLM' -Name 'Sonic Studio'

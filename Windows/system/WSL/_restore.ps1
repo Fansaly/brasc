@@ -13,5 +13,4 @@ if ($result.State -ne 'Enabled') {
 
   Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
   Write-Host "Please restart computer." -ForegroundColor Yellow
-  exit
 }
