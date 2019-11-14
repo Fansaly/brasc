@@ -59,8 +59,8 @@ Write-Tips 'setting', 'Desktop Icons'
 Write-Tips 'setting', 'Windows Explorer'
 . "${systemPath}\Explorer\_restore.ps1" -NoRestart
 
-Write-Tips 'setting', 'Keyboard'
-. "${systemPath}\Keyboard\_restore.ps1"
+Write-Tips 'setting', 'Language'
+. "${systemPath}\Language\_restore.ps1"
 
 # restart Windows Explorer
 Stop-Process -Name 'explorer'
