@@ -4,6 +4,7 @@ packages=(
   # compile packages, e.g.:
   # some packages from homebrew
   "gcc"
+  "zip"
   "unzip"
   "tree"
   "zsh"
@@ -12,9 +13,10 @@ packages=(
 todo=()
 
 for package in ${packages[@]}; do
-  dpkg-query -W -f='${Package}: ${Status} ${Version}' $package &>/dev/null
+  result=$(dpkg-query -W -f='${Package}: ${Status} ${Version}' $package)
+  code=$?
 
-  if [[ $? -ne 0 ]]; then
+  if [[ "$result" =~ "not-installed" || $code -ne 0 ]]; then
     todo+=("$package")
   fi
 done
