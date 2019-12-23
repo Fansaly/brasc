@@ -1,10 +1,10 @@
-# nodejs versions manager
+# developer tools
+yarn
 nodenv
+ffmpeg
 
 # paste PNG into files
 pngpaste
 
 # display directories as trees
 tree
-
-yarn

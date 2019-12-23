@@ -1,13 +1,14 @@
-# video player
-iina
+# developer tools
+docker
+
+# proxy
+shadowsocksx-ng
+reborn
+v2rayx
 
 # file archiver
 keka
 
-# 网易云音乐
+# player
 neteasemusic
-
-# proxy
-reborn
-shadowsocksx-ng
-v2rayx
+iina
