@@ -4,15 +4,14 @@
 UI = @{
   RegPath = 'HKCU:\Software\7-Zip\FM'
 
-  # Top  对于“居中”位置的相上偏移量
-  # Left 对于“居中”位置的相左偏移量
+  # Top  上偏移，相对于“居中”位置
+  # Left 左偏移，相对于“居中”位置
   # --------------------------------
-  # Top, Left 均为 0 时 Offset 可省写
+  # Top Left 都为 0 时，Offset 可略去
   Sizes = @{
     '3840x2160' = @{
       Width  = 1500
       Height = 870
-      # 相对“居中”位置偏移
       Offset = @{
         Top  = 40
         Left = 30
@@ -21,7 +20,6 @@ UI = @{
     '2560x1440' = @{
       Width  = 1096
       Height = 636
-      # 相对“居中”位置偏移
       Offset = @{
         Top  = 44
         Left = 55
@@ -30,7 +28,6 @@ UI = @{
     '1920x1080' = @{
       Width  = 870
       Height = 504
-      # 相对“居中”位置偏移
       Offset = @{
         Top  = 10
         Left = 25

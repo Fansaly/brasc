@@ -4,10 +4,10 @@
 UI = @{
   RegPath = 'HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell'
 
-  # Top  对于“居中”位置的相上偏移量
-  # Left 对于“居中”位置的相左偏移量
+  # Top  上偏移，相对于“居中”位置
+  # Left 左偏移，相对于“居中”位置
   # --------------------------------
-  # Top, Left 均为 0 时 Offset 可省写
+  # Top Left 都为 0 时，Offset 可略去
   Sizes = @{
     '3840x2160' = @{
       Width  = 2220
