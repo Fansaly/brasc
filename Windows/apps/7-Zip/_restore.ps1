@@ -4,7 +4,7 @@ $PSScriptsPath = (Get-Item -Path $ScriptFilePath).Parent.Parent.FullName + '\.PS
 
 . "${PSScriptsPath}\Write-Message.ps1"
 . "${PSScriptsPath}\Confirm-YesOrNo.ps1"
-. "${PSScriptsPath}\Get-ScreenInfo.ps1"
+. "${PSScriptsPath}\Get-DisplayInfo.ps1"
 . "${PSScriptsPath}\Get-UIPlacement.ps1"
 
 
@@ -36,8 +36,8 @@ if ($status) {
 
 
 function Set-7zFMPlacement {
-  $screenInfo  = Get-ScreenInfo -IsPrimary
-  $UIPlacement = Get-UIPlacement -ScreenInfo $screenInfo -UISizes $config.UI.Sizes
+  $DisplayInfo = Get-PrimaryDisplayInfo
+  $UIPlacement = Get-UIPlacement -DisplayInfo $DisplayInfo -UISizes $config.UI.Sizes
 
   $PlacementLeft   = $UIPlacement.Left
   $PlacementRight  = $UIPlacement.Right

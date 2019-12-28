@@ -4,13 +4,13 @@ $PSScriptsPath = (Get-Item -Path $ScriptFilePath).Parent.Parent.FullName + '\.PS
 
 . "${PSScriptsPath}\Write-Message.ps1"
 . "${PSScriptsPath}\Confirm-YesOrNo.ps1"
-. "${PSScriptsPath}\Get-ScreenInfo.ps1"
+. "${PSScriptsPath}\Get-DisplayInfo.ps1"
 . "${PSScriptsPath}\Get-UIPlacement.ps1"
 
 
-$global:screenInfo = Get-ScreenInfo -IsPrimary
+$global:DisplayInfo = Get-PrimaryDisplayInfo
 
-$configFileRequire = "${ScriptFilePath}\config.$($screenInfo.Resolution).psd1"
+$configFileRequire = "${ScriptFilePath}\config.$($DisplayInfo.Resolution).psd1"
 $configFileDefault = "${ScriptFilePath}\config.1920x1080.psd1"
 
 if ([IO.File]::Exists($configFileRequire)) {
@@ -43,7 +43,7 @@ if ($status) {
 
 
 function Get-MainWindowPlacement {
-  $UIPlacement = Get-UIPlacement -ScreenInfo $screenInfo -UISizes $config.Sizes
+  $UIPlacement = Get-UIPlacement -DisplayInfo $DisplayInfo -UISizes $config.Sizes
 
   $PlacementLeft   = $UIPlacement.Left
   $PlacementRight  = $UIPlacement.Right

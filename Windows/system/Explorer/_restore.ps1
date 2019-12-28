@@ -9,7 +9,7 @@ $ScriptFilePath = $PSScriptRoot
 $PSScriptsPath = (Get-Item -Path $ScriptFilePath).Parent.Parent.FullName + '\.PSScripts'
 
 
-. "${PSScriptsPath}\Get-ScreenInfo.ps1"
+. "${PSScriptsPath}\Get-DisplayInfo.ps1"
 . "${PSScriptsPath}\Get-UIPlacement.ps1"
 
 
@@ -30,9 +30,9 @@ function Set-ExplorerPlacement {
     $UI
   )
 
-  $ScreenInfo = Get-ScreenInfo -IsPrimary
-  $UIPlacement = Get-UIPlacement -ScreenInfo $ScreenInfo -UISizes $UI.Sizes
-  $Pos = "Pos$($ScreenInfo.Resolution)x96(1)"
+  $DisplayInfo = Get-PrimaryDisplayInfo
+  $UIPlacement = Get-UIPlacement -DisplayInfo $DisplayInfo -UISizes $UI.Sizes
+  $Pos = "Pos$($DisplayInfo.Resolution)x$($DisplayInfo.PixelsPerInch)(1)"
 
   Set-ItemProperty -Path $UI.RegPath -Type 'DWord' -Name "Win${Pos}.bottom" -Value $UIPlacement.Bottom
   Set-ItemProperty -Path $UI.RegPath -Type 'DWord' -Name "Win${Pos}.left"   -Value $UIPlacement.Left

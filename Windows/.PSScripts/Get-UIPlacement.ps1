@@ -2,21 +2,21 @@ function Get-UIPlacement {
   Param (
     [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
     [hashtable]
-    $ScreenInfo,
+    $DisplayInfo,
     [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
     [hashtable]
     $UISizes
   )
 
-  if ($ScreenInfo -isnot [hashtable] -and $UISizes -isnot [hashtable]) { return }
+  if ($DisplayInfo -isnot [hashtable] -and $UISizes -isnot [hashtable]) { return }
 
-  $AvailWidth  = $ScreenInfo.AvailWidth
-  $AvailHeight = $ScreenInfo.AvailHeight
+  $AvailWidth  = $DisplayInfo.AvailWidth
+  $AvailHeight = $DisplayInfo.AvailHeight
 
   if ($UISizes.ContainsKey('Width')) {
     $Sizes = $UISizes
-  } elseif ($UISizes.ContainsKey($ScreenInfo.Resolution)) {
-    $Sizes = $UISizes.Item($ScreenInfo.Resolution)
+  } elseif ($UISizes.ContainsKey($DisplayInfo.Resolution)) {
+    $Sizes = $UISizes.Item($DisplayInfo.Resolution)
   } elseif ($UISizes.ContainsKey('1920x1080')) {
     $Sizes = $UISizes.Item('1920x1080')
   } else {

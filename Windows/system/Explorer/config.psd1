@@ -9,6 +9,14 @@ UI = @{
   # --------------------------------
   # Top, Left 均为 0 时 Offset 可省写
   Sizes = @{
+    '3840x2160' = @{
+      Width  = 2220
+      Height = 1278
+      Offset = @{
+        Top  = 10
+        Left = 10
+      }
+    }
     '2560x1440' = @{
       Width  = 1480
       Height = 852
