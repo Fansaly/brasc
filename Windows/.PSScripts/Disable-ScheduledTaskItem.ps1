@@ -14,7 +14,7 @@ function Disable-ScheduledTaskItem {
   if ([String]::IsNullOrEmpty($TaskName)) { return }
 
   # $TaskName = $TaskName -replace '\s+','\s+'
-  $task = Get-ScheduledTask -TaskPath $TaskPath | ? { $_.TaskName -match $TaskName }
+  $task = Get-ScheduledTask -TaskPath $TaskPath -ErrorAction 'Ignore' | ? { $_.TaskName -match $TaskName }
 
   if ([bool]$task -and $task.State -ne 'Disabled') {
     if (!$(Get-PermissionStatus)) { return }
