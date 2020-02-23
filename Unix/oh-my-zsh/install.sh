@@ -36,15 +36,15 @@ fi
 
 content=$(cat "$zshrc")
 # config oh-my-zsh theme
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  ZSH_THEME_Target=ZSH_THEME=\"maran\"
-  ZSH_THEME_Current=$(printf "$content" | grep -e "^ZSH_THEME=*")
+# if [[ "$OSTYPE" == "linux-gnu" ]]; then
+#   ZSH_THEME_Target=ZSH_THEME=\"maran\"
+#   ZSH_THEME_Current=$(printf "$content" | grep -e "^ZSH_THEME=*")
 
-  if [[ "$ZSH_THEME_Current" != "$ZSH_THEME_Target" ]]; then
-    changed=true
-    content=$(printf "$content" | sed -e 's/'"${ZSH_THEME_Current}"'/'"${ZSH_THEME_Target}"'/')
-  fi
-fi
+#   if [[ "$ZSH_THEME_Current" != "$ZSH_THEME_Target" ]]; then
+#     changed=true
+#     content=$(printf "$content" | sed -e 's/'"${ZSH_THEME_Current}"'/'"${ZSH_THEME_Target}"'/')
+#   fi
+# fi
 # source profile into zsh
 printf "$content" | grep -e "source ~/.*profile" >/dev/null 2>&1 || {
   changed=true
