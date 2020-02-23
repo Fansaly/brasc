@@ -15,6 +15,9 @@ source "$masterDIR/sources.list/_restore.sh"
 ECHO "install" "packages (apt-get)"
 source "$masterDIR/packages/install.sh"
 
+ECHO "setting" "locale"
+source "$masterDIR/locale/_restore.sh"
+
 ECHO "install" "homebrew and packages"
 source "$unixDIR/homebrew/install.sh"
 [[ $? -eq 5 ]] && RESTART_SHELL=true

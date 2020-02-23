@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# export LC_COLLATE="zh_CN.UTF-8"
+export LANG="C"
+export LC_CTYPE="zh_CN.UTF-8"
+export LC_COLLATE="zh_CN.UTF-8"
 
 PROJECTS_DIR=/mnt/e/Projects
 
