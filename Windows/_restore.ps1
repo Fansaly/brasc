@@ -90,6 +90,9 @@ Write-Tips 'setting', 'Command Prompt and PowerShell'
 Write-Tips 'enable', 'Microsoft Windows Subsystem Linux'
 . "${systemPath}\WSL\_restore.ps1"
 
+Write-Tips 'restore', 'Windows Terminal'
+. "${systemPath}\Terminal\_restore.ps1"
+
 # apps configuration
 Write-Tips 'setting', 'Shadowsocks'
 . "${appsPath}\Shadowsocks\_restore.ps1"

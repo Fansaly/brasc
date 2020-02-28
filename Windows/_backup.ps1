@@ -44,6 +44,9 @@ Write-Tips 'Notifications Action Center'
 Write-Tips 'Windows PowerShell Shortcut'
 . "${systemPath}\Shell\PSShortcut.ps1" -Action 'Backup'
 
+Write-Tips 'Windows Terminal'
+. "${systemPath}\Terminal\_backup.ps1"
+
 Write-Tips 'TaskManager'
 . "${systemPath}\TaskManager\_backup.ps1"
 
