@@ -9,6 +9,9 @@ unixDIR=$masterDIR/../Unix
 unset RESTART_SHELL
 
 
+ECHO "create" "some profile"
+source "$unixDIR/_create/_create.sh"
+
 ECHO "config" "sources list"
 source "$masterDIR/sources.list/_restore.sh"
 
