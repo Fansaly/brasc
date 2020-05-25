@@ -4,11 +4,25 @@ export LANG="C"
 export LC_CTYPE="zh_CN.UTF-8"
 export LC_COLLATE="zh_CN.UTF-8"
 
-PROJECTS_DIR=/mnt/e/Projects
+# disable homebrew auto update
+export HOMEBREW_NO_AUTO_UPDATE=1
 
-if [[ -d "${PROJECTS_DIR}" ]]; then
-  cd "${PROJECTS_DIR}"
-fi
+PROJECTS_DIR=
+PROJECTS_DISKS=(
+  'd'
+  'e'
+)
+
+for disk in ${PROJECTS_DISKS[@]}; do
+  PROJECTS_DIR="/mnt/${disk}/Projects"
+
+  if [[ ! -d "$PROJECTS_DIR" ]]; then
+    unset PROJECTS_DIR
+  else
+    cd "$PROJECTS_DIR"
+    break
+  fi
+done
 
 if [[ -f "${PROJECTS_DIR}/alias/alias.sh" ]]; then
   source "${PROJECTS_DIR}/alias/alias.sh"
