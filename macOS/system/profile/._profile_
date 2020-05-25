@@ -1,6 +1,15 @@
 #!/bin/bash
 
+# disable homebrew auto update
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 # configure environment for nodenv
 command -v nodenv &>/dev/null && {
   eval "$(nodenv init -)"
 }
+
+PROJECTS_DIR="$HOME/Projects"
+
+if [[ -f "${PROJECTS_DIR}/alias/alias.sh" ]]; then
+  source "${PROJECTS_DIR}/alias/alias.sh"
+fi
