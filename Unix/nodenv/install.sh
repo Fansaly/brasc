@@ -19,7 +19,7 @@ command -v git &>/dev/null || {
   return 1 &>/dev/null || exit 1
 }
 
-git clone https://github.com/nodenv/nodenv.git "$nodenv" && {
+git clone --depth=1 https://github.com/nodenv/nodenv.git "$nodenv" && {
   cat "$profile" | grep "nodenv" >/dev/null 2>&1 || {
     echo -e "\n# nodenv environment" >> "$profile"
     echo 'export PATH="$HOME/.nodenv/bin:$PATH"' >> "$profile"
@@ -27,8 +27,8 @@ git clone https://github.com/nodenv/nodenv.git "$nodenv" && {
   }
 
   mkdir -p "$nodenv/plugins"
-  git clone https://github.com/nodenv/node-build.git "$nodenv/plugins/node-build"
-  git clone https://github.com/nodenv/nodenv-update.git "$nodenv/plugins/nodenv-update"
+  git clone --depth=1 https://github.com/nodenv/node-build.git "$nodenv/plugins/node-build"
+  git clone --depth=1 https://github.com/nodenv/nodenv-update.git "$nodenv/plugins/nodenv-update"
 
   chmod -R go-w "$nodenv"
 

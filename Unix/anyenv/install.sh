@@ -19,7 +19,7 @@ command -v git &>/dev/null || {
   return 1 &>/dev/null || exit 1
 }
 
-git clone https://github.com/riywo/anyenv.git "$anyenv" && {
+git clone --depth=1 https://github.com/riywo/anyenv.git "$anyenv" && {
   cat "$profile" | grep "anyenv" >/dev/null 2>&1 || {
     echo -e "\n# anyenv environment" >> "$profile"
     echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> "$profile"
@@ -27,7 +27,7 @@ git clone https://github.com/riywo/anyenv.git "$anyenv" && {
   }
 
   mkdir -p "$anyenv/plugins"
-  git clone https://github.com/znz/anyenv-update.git "$anyenv/plugins/anyenv-update"
+  git clone --depth=1 https://github.com/znz/anyenv-update.git "$anyenv/plugins/anyenv-update"
 
   "$anyenv/bin/anyenv" install ndenv
 
