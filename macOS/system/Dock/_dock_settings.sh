@@ -48,6 +48,9 @@ newXmlCtx=$(irXml "autohide" -bool NO "$newXmlCtx")
 # Show indicators for open applications
 newXmlCtx=$(irXml "show-process-indicators" -bool YES "$newXmlCtx")
 
+# Show recent applications in Dock
+newXmlCtx=$(irXml "show-recents" -bool NO "$newXmlCtx")
+
 
 # Dashboard
 # ---------

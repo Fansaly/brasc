@@ -2,29 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Siri</key>
-    <dict>
-        <key>tile-data</key>
-        <dict>
-            <key>bundle-identifier</key>
-            <string>com.apple.siri.launcher</string>
-            <key>dock-extra</key>
-            <false/>
-            <key>file-data</key>
-            <dict>
-                <key>_CFURLString</key>
-                <string>file:///Applications/Siri.app/</string>
-                <key>_CFURLStringType</key>
-                <integer>15</integer>
-            </dict>
-            <key>file-label</key>
-            <string>Siri</string>
-            <key>file-type</key>
-            <integer>169</integer>
-        </dict>
-        <key>tile-type</key>
-        <string>file-tile</string>
-    </dict>
     <key>Launchpad</key>
     <dict>
         <key>tile-data</key>
@@ -36,7 +13,7 @@
             <key>file-data</key>
             <dict>
                 <key>_CFURLString</key>
-                <string>file:///Applications/Launchpad.app/</string>
+                <string>file:///System/Applications/Launchpad.app/</string>
                 <key>_CFURLStringType</key>
                 <integer>15</integer>
             </dict>
@@ -82,7 +59,7 @@
             <key>file-data</key>
             <dict>
                 <key>_CFURLString</key>
-                <string>file:///Applications/Mail.app/</string>
+                <string>file:///System/Applications/Mail.app/</string>
                 <key>_CFURLStringType</key>
                 <integer>15</integer>
             </dict>
@@ -94,92 +71,46 @@
         <key>tile-type</key>
         <string>file-tile</string>
     </dict>
-    <key>Contacts</key>
+    <key>FaceTime</key>
     <dict>
         <key>tile-data</key>
         <dict>
             <key>bundle-identifier</key>
-            <string>com.apple.AddressBook</string>
-            <key>dock-extra</key>
-            <false/>
-            <key>file-data</key>
-            <dict>
-                <key>_CFURLString</key>
-                <string>file:///Applications/Contacts.app/</string>
-                <key>_CFURLStringType</key>
-                <integer>15</integer>
-            </dict>
-            <key>file-label</key>
-            <string>Contacts</string>
-            <key>file-type</key>
-            <integer>41</integer>
-        </dict>
-        <key>tile-type</key>
-        <string>file-tile</string>
-    </dict>
-    <key>Calendar</key>
-    <dict>
-        <key>tile-data</key>
-        <dict>
-            <key>bundle-identifier</key>
-            <string>com.apple.iCal</string>
+            <string>com.apple.FaceTime</string>
             <key>dock-extra</key>
             <true/>
             <key>file-data</key>
             <dict>
                 <key>_CFURLString</key>
-                <string>file:///Applications/Calendar.app/</string>
+                <string>file:///System/Applications/FaceTime.app/</string>
                 <key>_CFURLStringType</key>
                 <integer>15</integer>
             </dict>
             <key>file-label</key>
-            <string>Calendar</string>
+            <string>FaceTime</string>
             <key>file-type</key>
             <integer>41</integer>
         </dict>
         <key>tile-type</key>
         <string>file-tile</string>
     </dict>
-    <key>Notes</key>
+    <key>Messages</key>
     <dict>
         <key>tile-data</key>
         <dict>
             <key>bundle-identifier</key>
-            <string>com.apple.Notes</string>
-            <key>dock-extra</key>
-            <false/>
-            <key>file-data</key>
-            <dict>
-                <key>_CFURLString</key>
-                <string>file:///Applications/Notes.app/</string>
-                <key>_CFURLStringType</key>
-                <integer>15</integer>
-            </dict>
-            <key>file-label</key>
-            <string>Notes</string>
-            <key>file-type</key>
-            <integer>41</integer>
-        </dict>
-        <key>tile-type</key>
-        <string>file-tile</string>
-    </dict>
-    <key>Reminders</key>
-    <dict>
-        <key>tile-data</key>
-        <dict>
-            <key>bundle-identifier</key>
-            <string>com.apple.reminders</string>
+            <string>com.apple.iChat</string>
             <key>dock-extra</key>
             <true/>
             <key>file-data</key>
             <dict>
                 <key>_CFURLString</key>
-                <string>file:///Applications/Reminders.app/</string>
+                <string>file:///System/Applications/Messages.app/</string>
                 <key>_CFURLStringType</key>
                 <integer>15</integer>
             </dict>
             <key>file-label</key>
-            <string>Reminders</string>
+            <string>Messages</string>
             <key>file-type</key>
             <integer>41</integer>
         </dict>
@@ -197,7 +128,7 @@
             <key>file-data</key>
             <dict>
                 <key>_CFURLString</key>
-                <string>file:///Applications/Maps.app/</string>
+                <string>file:///System/Applications/Maps.app/</string>
                 <key>_CFURLStringType</key>
                 <integer>15</integer>
             </dict>
@@ -220,7 +151,7 @@
             <key>file-data</key>
             <dict>
                 <key>_CFURLString</key>
-                <string>file:///Applications/Photos.app/</string>
+                <string>file:///System/Applications/Photos.app/</string>
                 <key>_CFURLStringType</key>
                 <integer>15</integer>
             </dict>
@@ -232,92 +163,161 @@
         <key>tile-type</key>
         <string>file-tile</string>
     </dict>
-    <key>Messages</key>
+    <key>Contacts</key>
     <dict>
         <key>tile-data</key>
         <dict>
             <key>bundle-identifier</key>
-            <string>com.apple.iChat</string>
-            <key>dock-extra</key>
-            <true/>
-            <key>file-data</key>
-            <dict>
-                <key>_CFURLString</key>
-                <string>file:///Applications/Messages.app/</string>
-                <key>_CFURLStringType</key>
-                <integer>15</integer>
-            </dict>
-            <key>file-label</key>
-            <string>Messages</string>
-            <key>file-type</key>
-            <integer>41</integer>
-        </dict>
-        <key>tile-type</key>
-        <string>file-tile</string>
-    </dict>
-    <key>FaceTime</key>
-    <dict>
-        <key>tile-data</key>
-        <dict>
-            <key>bundle-identifier</key>
-            <string>com.apple.FaceTime</string>
-            <key>dock-extra</key>
-            <true/>
-            <key>file-data</key>
-            <dict>
-                <key>_CFURLString</key>
-                <string>file:///Applications/FaceTime.app/</string>
-                <key>_CFURLStringType</key>
-                <integer>15</integer>
-            </dict>
-            <key>file-label</key>
-            <string>FaceTime</string>
-            <key>file-type</key>
-            <integer>41</integer>
-        </dict>
-        <key>tile-type</key>
-        <string>file-tile</string>
-    </dict>
-    <key>iTunes</key>
-    <dict>
-        <key>tile-data</key>
-        <dict>
-            <key>bundle-identifier</key>
-            <string>com.apple.iTunes</string>
-            <key>dock-extra</key>
-            <true/>
-            <key>file-data</key>
-            <dict>
-                <key>_CFURLString</key>
-                <string>file:///Applications/iTunes.app/</string>
-                <key>_CFURLStringType</key>
-                <integer>15</integer>
-            </dict>
-            <key>file-label</key>
-            <string>iTunes</string>
-            <key>file-type</key>
-            <integer>41</integer>
-        </dict>
-        <key>tile-type</key>
-        <string>file-tile</string>
-    </dict>
-    <key>iBooks</key>
-    <dict>
-        <key>tile-data</key>
-        <dict>
-            <key>bundle-identifier</key>
-            <string>com.apple.iBooksX</string>
+            <string>com.apple.AddressBook</string>
             <key>dock-extra</key>
             <false/>
             <key>file-data</key>
             <dict>
                 <key>_CFURLString</key>
-                <string>file:///Applications/iBooks.app/</string>
+                <string>file:///System/Applications/Contacts.app/</string>
                 <key>_CFURLStringType</key>
                 <integer>15</integer>
             </dict>
             <key>file-label</key>
-            <string>iBooks</string>
+            <string>Contacts</string>
+            <key>file-type</key>
+            <integer>41</integer>
+        </dict>
+        <key>tile-type</key>
+        <string>file-tile</string>
+    </dict>
+    <key>Calendar</key>
+    <dict>
+        <key>tile-data</key>
+        <dict>
+            <key>bundle-identifier</key>
+            <string>com.apple.iCal</string>
+            <key>dock-extra</key>
+            <true/>
+            <key>file-data</key>
+            <dict>
+                <key>_CFURLString</key>
+                <string>file:///System/Applications/Calendar.app/</string>
+                <key>_CFURLStringType</key>
+                <integer>15</integer>
+            </dict>
+            <key>file-label</key>
+            <string>Calendar</string>
+            <key>file-type</key>
+            <integer>41</integer>
+        </dict>
+        <key>tile-type</key>
+        <string>file-tile</string>
+    </dict>
+    <key>Reminders</key>
+    <dict>
+        <key>tile-data</key>
+        <dict>
+            <key>bundle-identifier</key>
+            <string>com.apple.reminders</string>
+            <key>dock-extra</key>
+            <true/>
+            <key>file-data</key>
+            <dict>
+                <key>_CFURLString</key>
+                <string>file:///System/Applications/Reminders.app/</string>
+                <key>_CFURLStringType</key>
+                <integer>15</integer>
+            </dict>
+            <key>file-label</key>
+            <string>Reminders</string>
+            <key>file-type</key>
+            <integer>41</integer>
+        </dict>
+        <key>tile-type</key>
+        <string>file-tile</string>
+    </dict>
+    <key>Notes</key>
+    <dict>
+        <key>tile-data</key>
+        <dict>
+            <key>bundle-identifier</key>
+            <string>com.apple.Notes</string>
+            <key>dock-extra</key>
+            <false/>
+            <key>file-data</key>
+            <dict>
+                <key>_CFURLString</key>
+                <string>file:///System/Applications/Notes.app/</string>
+                <key>_CFURLStringType</key>
+                <integer>15</integer>
+            </dict>
+            <key>file-label</key>
+            <string>Notes</string>
+            <key>file-type</key>
+            <integer>41</integer>
+        </dict>
+        <key>tile-type</key>
+        <string>file-tile</string>
+    </dict>
+    <key>Music</key>
+    <dict>
+        <key>tile-data</key>
+        <dict>
+            <key>bundle-identifier</key>
+            <string>com.apple.Music</string>
+            <key>dock-extra</key>
+            <false/>
+            <key>file-data</key>
+            <dict>
+                <key>_CFURLString</key>
+                <string>file:///System/Applications/Music.app/</string>
+                <key>_CFURLStringType</key>
+                <integer>15</integer>
+            </dict>
+            <key>file-label</key>
+            <string>Music</string>
+            <key>file-type</key>
+            <integer>41</integer>
+        </dict>
+        <key>tile-type</key>
+        <string>file-tile</string>
+    </dict>
+    <key>Podcasts</key>
+    <dict>
+        <key>tile-data</key>
+        <dict>
+            <key>bundle-identifier</key>
+            <string>com.apple.podcasts</string>
+            <key>dock-extra</key>
+            <false/>
+            <key>file-data</key>
+            <dict>
+                <key>_CFURLString</key>
+                <string>file:///System/Applications/Podcasts.app/</string>
+                <key>_CFURLStringType</key>
+                <integer>15</integer>
+            </dict>
+            <key>file-label</key>
+            <string>Podcasts</string>
+            <key>file-type</key>
+            <integer>41</integer>
+        </dict>
+        <key>tile-type</key>
+        <string>file-tile</string>
+    </dict>
+    <key>TV</key>
+    <dict>
+        <key>tile-data</key>
+        <dict>
+            <key>bundle-identifier</key>
+            <string>com.apple.TV</string>
+            <key>dock-extra</key>
+            <false/>
+            <key>file-data</key>
+            <dict>
+                <key>_CFURLString</key>
+                <string>file:///System/Applications/TV.app/</string>
+                <key>_CFURLStringType</key>
+                <integer>15</integer>
+            </dict>
+            <key>file-label</key>
+            <string>Videos</string>
             <key>file-type</key>
             <integer>41</integer>
         </dict>
@@ -329,13 +329,13 @@
         <key>tile-data</key>
         <dict>
             <key>bundle-identifier</key>
-            <string>com.apple.appstore</string>
+            <string>com.apple.AppStore</string>
             <key>dock-extra</key>
             <true/>
             <key>file-data</key>
             <dict>
                 <key>_CFURLString</key>
-                <string>file:///Applications/App%20Store.app/</string>
+                <string>file:///System/Applications/App%20Store.app/</string>
                 <key>_CFURLStringType</key>
                 <integer>15</integer>
             </dict>
@@ -358,7 +358,7 @@
             <key>file-data</key>
             <dict>
                 <key>_CFURLString</key>
-                <string>file:///Applications/System%20Preferences.app/</string>
+                <string>file:///System/Applications/System%20Preferences.app/</string>
                 <key>_CFURLStringType</key>
                 <integer>15</integer>
             </dict>
@@ -381,7 +381,7 @@
             <key>file-data</key>
             <dict>
                 <key>_CFURLString</key>
-                <string>file:///Applications/Utilities/Terminal.app/</string>
+                <string>file:///System/Applications/Utilities/Terminal.app/</string>
                 <key>_CFURLStringType</key>
                 <integer>15</integer>
             </dict>
