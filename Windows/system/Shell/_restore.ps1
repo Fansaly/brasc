@@ -57,6 +57,16 @@ Set-ItemProperty -Path $consolePath -Name 'FontSize' -Type DWord -Value $FontSiz
 Set-ItemProperty -Path $consolePath -Name 'WindowSize' -Type DWord -Value $WindowSize
 Set-ItemProperty -Path $consolePath -Name 'WindowAlpha' -Type DWord -Value $WindowAlpha
 
+
+# HKEY_CURRENT_USER\Software\Microsoft\Command Processor
+# AutoRun %USERPROFILE%\Documents\WindowsCommandProcessor\profile.cmd
+
+# set the CurrentUser scope's execution policy to RemoteSigned
+# it is written to the registry hive HKEY_CURRENT_USER
+# learn more: https://go.microsoft.com/fwlink/?LinkID=135170
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+
+
 # remove private settings of Command Prompt
 Get-ChildItem -Path $consolePath | ForEach-Object {
   $keyName = $_.Name | Split-Path -Leaf
