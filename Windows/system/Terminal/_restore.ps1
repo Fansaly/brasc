@@ -1,5 +1,5 @@
 $ScriptFilePath = $PSScriptRoot
-$configFileName = "profiles.json"
+$configFileName = "settings.json"
 
 $TerminalPath = (Resolve-Path -Path "${env:LocalAppData}\Packages\Microsoft.WindowsTerminal_*").Path
 $TerminalConfigPath = "${TerminalPath}\LocalState"
