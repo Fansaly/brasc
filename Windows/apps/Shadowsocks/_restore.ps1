@@ -3,7 +3,17 @@ $PSScriptsPath = (Get-Item -Path $PSScriptRoot).Parent.Parent.FullName + '\.PSSc
 . "${PSScriptsPath}\Set-StartupItem.ps1"
 
 
-$ssApp = 'D:\Program Files\Shadowsocks\Shadowsocks.exe'
+$installPaths = @(
+  "$env:LocalAppdata\Program Files\Shadowsocks",
+  'D:\Program Files\Shadowsocks'
+)
+
+$installPaths | % {
+  if ([IO.File]::Exists("$_\Shadowsocks.exe")) {
+    $ssApp = "$_\Shadowsocks.exe"
+    return
+  }
+}
 
 if (![IO.File]::Exists($ssApp)) {
   Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
@@ -11,8 +21,6 @@ if (![IO.File]::Exists($ssApp)) {
   exit
 }
 
-
-Set-StartupItem -Action 'Create' -Path 'HKCU' -Name 'Shadowsocks' -Value $ssApp
 
 $isRunning = Get-Process | Where-Object ProcessName -Match 'Shadowsocks'
 
