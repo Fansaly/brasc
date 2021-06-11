@@ -7,14 +7,17 @@ export LC_COLLATE="zh_CN.UTF-8"
 # disable homebrew auto update
 export HOMEBREW_NO_AUTO_UPDATE=1
 
+WINHOME=$(wslpath "$(wslvar USERPROFILE)")
+
 PROJECTS_DIR=
-PROJECTS_DISKS=(
-  'd'
-  'e'
+PROJECTS_DIRS=(
+  "${WINHOME}/Downloads/Projects"
+  "/mnt/d/Projects"
+  "/mnt/e/Projects"
 )
 
-for disk in ${PROJECTS_DISKS[@]}; do
-  PROJECTS_DIR="/mnt/${disk}/Projects"
+for target in ${PROJECTS_DIRS[@]}; do
+  PROJECTS_DIR=$target
 
   if [[ ! -d "$PROJECTS_DIR" ]]; then
     unset PROJECTS_DIR
