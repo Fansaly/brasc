@@ -26,6 +26,13 @@ function Set-StartupItem {
     $startupPath = "${regPath}\Run"
     $startupApprovedPath = "${regPath}\Explorer\StartupApproved\Run"
 
+    if (!(Test-Path -Path $startupPath)) {
+      New-Item -ItemType Directory -Path $startupPath | Out-Null
+    }
+    if (!(Test-Path -Path $startupApprovedPath)) {
+      New-Item -ItemType Directory -Path $startupApprovedPath -Force | Out-Null
+    }
+
     $startupName = $Null
     $startupApprovedValue = $Null
 
