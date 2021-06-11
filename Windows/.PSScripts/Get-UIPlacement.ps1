@@ -17,12 +17,20 @@ function Get-UIPlacement {
     $Sizes = $UISizes
   } elseif ($UISizes.ContainsKey($DisplayInfo.Resolution)) {
     $Sizes = $UISizes.Item($DisplayInfo.Resolution)
-  } elseif ($UISizes.ContainsKey('1920x1080')) {
-    $Sizes = $UISizes.Item('1920x1080')
   } else {
+    $Width = [Math]::Round($AvailWidth * 0.76)
+    $Height = [Math]::Round($AvailHeight * 0.76)
+
+    if ($Width % 2 -ne 0) {
+      $Width++
+    }
+    if ($Height % 2 -ne 0) {
+      $Height++
+    }
+
     $Sizes = @{
-      Width = 0
-      Height = 0
+      Width = $Width
+      Height = $Height
     }
   }
 
