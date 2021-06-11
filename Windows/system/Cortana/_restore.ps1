@@ -13,7 +13,7 @@ $Type = 'DWord'
 # 0 => 隐藏
 # 1 => 显示图标
 # 2 => 显示搜索框
-$Value = 1
+$Value = 0
 
 Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value
 
