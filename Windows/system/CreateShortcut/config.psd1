@@ -7,23 +7,39 @@
     },
     @{
       Name = 'Registry Workshop'
-      Path = 'D:\Program Files\Registry Workshop\RegWorkshopX64.exe'
+      Path = @(
+        'D:\Program Files\Registry Workshop\RegWorkshopX64.exe'
+      )
     },
     @{
       Name = 'Notepad++'
-      Path = 'D:\Program Files\Notepad++\notepad++.exe'
+      Path = @(
+        'C:\Program Files\Notepad++\notepad++.exe',
+        'D:\Program Files\Notepad++\notepad++.exe'
+      )
     },
     @{
       Name = 'Beyond Compare'
-      Path = 'D:\Program Files\Beyond Compare\BCompare.exe'
+      Path = @(
+        'C:\Program Files\Beyond Compare\BCompare.exe',
+        'D:\Program Files\Beyond Compare\BCompare.exe'
+      )
     },
     @{
       Name = 'Î¢ÐÅ'
-      Path = 'D:\Program Files\Tencent\WeChat\WeChat.exe'
+      Path = @(
+        'C:\Program Files (x86)\Tencent\WeChat\WeChat.exe',
+        'D:\Program Files\Tencent\WeChat\WeChat.exe'
+      )
     },
     @{
       Name = 'Ñ¸À×'
-      Path = 'D:\Program Files\Thunder\Program\Thunder.exe'
+      Path = @(
+        'C:\Program Files (x86)\ThunderX\Program\Thunder.exe',
+        'C:\Program Files (x86)\Thunder\Program\Thunder.exe',
+        'D:\Program Files\ThunderX\Program\Thunder.exe',
+        'D:\Program Files\Thunder\Program\Thunder.exe'
+      )
     },
     @{
       Name = 'Steam'

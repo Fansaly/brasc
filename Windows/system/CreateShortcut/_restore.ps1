@@ -22,5 +22,10 @@ $config.Programs | % {
     $Location = $LinkLocation
   }
 
-  New-Shortcut -Path $Path -Location $Location -Name $Name
+  $Path | % {
+    if ([IO.File]::Exists([Environment]::ExpandEnvironmentVariables($_))) {
+      New-Shortcut -Path $_ -Location $Location -Name $Name
+      return
+    }
+  }
 }
