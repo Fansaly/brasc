@@ -8,6 +8,6 @@ for lang in ${langs[@]}; do
   lang_locale="${lang/UTF-8/utf8}"
 
   locale -a | grep "$lang_locale" >/dev/null 2>&1 || {
-    locale-gen $lang
+    sudo locale-gen $lang
   }
 done
