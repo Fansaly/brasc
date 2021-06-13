@@ -22,10 +22,10 @@ for package in ${packages[@]}; do
 done
 
 if test ${#todo[@]} -gt 0 && sudo -v; then
-  echo -e "\033[0;36mupdating\033[0m: packages list ..."
+  echo -e "\033[0;36mupdating\033[0m packages list ..."
   sudo apt-get update
-  # echo -e "\033[0;36mupgrading\033[0m: packages ..."
+  # echo -e "\033[0;36mupgrading\033[0m packages ..."
   # sudo apt-get -y upgrade
-  echo -e "\033[0;36minstalling\033[0m: \033[0;95m${todo[@]}\033[0m ..."
+  echo -e "\033[0;36minstalling\033[0m \033[0;95m${todo[@]}\033[0m ..."
   sudo apt-get -y install ${todo[@]}
 fi
