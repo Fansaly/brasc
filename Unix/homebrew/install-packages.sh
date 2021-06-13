@@ -87,12 +87,12 @@ function install_packages() {
     # install
     for package in ${todo[@]}; do
       echo -n "[$((++i_i))/${#todo[@]}] "
-      echo -e "\033[0;35minstalling\033[0m: \033[0;4m${package}\033[0m ..."
+      echo -e "\033[0;36minstalling\033[0m \033[0;95m${package}\033[0m ..."
 
       if [[ "$(basename $list)" == "homebrew.list" ]]; then
         "$brew" install $package
       else
-        "$brew" cask install $package
+        "$brew" install --cask $package
       fi
     done
   done
