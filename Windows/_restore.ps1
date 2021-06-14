@@ -50,8 +50,8 @@ Write-Tips 'restore', 'Notifications Action Center'
 Write-Tips 'restore', 'StartLayout'
 . "${systemPath}\StartLayout\_restore.ps1" -NoRestart
 
-Write-Tips 'setting', 'Cortana'
-. "${systemPath}\Cortana\_restore.ps1" -NoRestart
+Write-Tips 'setting', 'Taskbar'
+. "${systemPath}\Taskbar\_restore.ps1" -NoRestart
 
 Write-Tips 'setting', 'Desktop Icons'
 . "${systemPath}\DesktopIcons\_restore.ps1" -NoRestart
