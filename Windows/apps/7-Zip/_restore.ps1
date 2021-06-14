@@ -54,7 +54,11 @@ function Set-7zFMPlacement {
   $Placement += @(($PlacementBottom % 255), ([Math]::Floor($PlacementBottom / 255)), 0, 0)
   $Placement += @(0, 0, 0, 0)
 
-  Set-ItemProperty -Path $config.UI.RegPath -Name 'Position' -Type 'Binary' -Value $Placement
+  $Path7zFM = $config.UI.RegPath
+  if (!(Test-Path -Path $Path7zFM)) {
+    New-Item -Path $Path7zFM | Out-Null
+  }
+  Set-ItemProperty -Path $Path7zFM -Name 'Position' -Type 'Binary' -Value $Placement
 }
 
 function Set-7zSetting {
