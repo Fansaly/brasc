@@ -1,12 +1,17 @@
 # developer tools
-docker
 utm
-postman
+docker
+android-studio
+adoptopenjdk/openjdk/adoptopenjdk8
+
 firefox
+postman
 hbuilderx
+wechatwebdevtools
 mark-text
 
 # proxy
+surge
 clashx
 
 # file archiver
@@ -23,4 +28,5 @@ neteasemusic
 iina
 
 # others
+baidunetdisk
 thunder

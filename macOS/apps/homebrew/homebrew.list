@@ -1,4 +1,5 @@
 # developer tools
+pnpm
 yarn
 nodenv
 
@@ -7,6 +8,9 @@ pngpaste
 
 # display directories as trees
 tree
+
+# Simple hotkey-daemon for macOS
+skhd
 
 # media tools
 ffmpeg
