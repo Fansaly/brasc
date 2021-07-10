@@ -70,7 +70,7 @@ function install_packages() {
     if [[ "$(basename $list)" == "homebrew.list" ]]; then
       installed=($("$brew" list))
     else
-      installed=($("$brew" cask list))
+      installed=($("$brew" list --cask))
     fi
 
     [[ ${#packages[@]} -eq 0 ]] && packages=("")
