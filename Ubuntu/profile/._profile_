@@ -7,11 +7,11 @@ export LC_COLLATE="zh_CN.UTF-8"
 # disable homebrew auto update
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-WINHOME=$(wslpath "$(wslvar USERPROFILE)")
 
+# specify workspace path
 PROJECTS_DIR=
 PROJECTS_DIRS=(
-  "${WINHOME}/Downloads/Projects"
+  "${HOME}/Projects"
   "/mnt/d/Projects"
   "/mnt/e/Projects"
 )
@@ -22,11 +22,23 @@ for target in ${PROJECTS_DIRS[@]}; do
   if [[ ! -d "$PROJECTS_DIR" ]]; then
     unset PROJECTS_DIR
   else
-    cd "$PROJECTS_DIR"
     break
   fi
 done
 
-if [[ -f "${PROJECTS_DIR}/alias/alias.sh" ]]; then
-  source "${PROJECTS_DIR}/alias/alias.sh"
+if [[ ! -d "$PROJECTS_DIR" ]]; then
+  WINHOME=$(wslpath "$(wslvar USERPROFILE)")
+  PROJECTS_DIR=${WINHOME}/Downloads/Projects
+fi
+
+
+# enter workspace and load custom scripts
+if [[ ! -d "$PROJECTS_DIR" ]]; then
+  unset PROJECTS_DIR
+else
+  cd "$PROJECTS_DIR"
+
+  if [[ -f "${PROJECTS_DIR}/alias/alias.sh" ]]; then
+    source "${PROJECTS_DIR}/alias/alias.sh"
+  fi
 fi
