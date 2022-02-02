@@ -3,3 +3,4 @@
 	email = fansaly@gmail.com
 [core]
 	quotepath = false
+	editor = vim
