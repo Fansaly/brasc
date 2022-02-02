@@ -27,9 +27,9 @@ ECHO "install" "homebrew and packages"
 source "$unixDIR/homebrew/install.sh"
 [[ $? -eq 5 ]] && RESTART_SHELL=true
 
-ECHO "install" "nodenv (nvm)"
-source "$unixDIR/nodenv/install.sh"
-[[ $? -eq 5 ]] && RESTART_SHELL=true
+# ECHO "install" "nodenv (nvm)"
+# source "$unixDIR/nodenv/install.sh"
+# [[ $? -eq 5 ]] && RESTART_SHELL=true
 
 
 ECHO "create" "some profile"
