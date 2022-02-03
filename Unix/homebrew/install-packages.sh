@@ -68,7 +68,7 @@ function install_packages() {
 
     packages=($(cat "$list" | sed -e "/^#/d"))
     if [[ "$(basename $list)" == "homebrew.list" ]]; then
-      installed=($("$brew" list))
+      installed=($("$brew" list --formula))
     else
       installed=($("$brew" list --cask))
     fi
@@ -101,11 +101,10 @@ function install_packages() {
 currentDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  brew=/usr/local/bin/brew
   listDIR="$currentDIR/../../macOS/apps/homebrew"
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
-  brew=/home/linuxbrew/.linuxbrew/bin/brew
   listDIR="$currentDIR/../../Ubuntu/homebrew"
 fi
 
+brew=$(which brew)
 install_packages "$brew" "$listDIR"
