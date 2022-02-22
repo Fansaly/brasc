@@ -1,5 +1,25 @@
 #!/bin/bash
 
+# Android development environment
+if [[ -d "$HOME/Library/Android/sdk" ]]; then
+  ANDROID_SDK=$HOME/Library/Android/sdk
+elif [[ -d "$HOME/Android/Sdk" ]]; then
+  ANDROID_SDK=$HOME/Android/Sdk
+fi
+
+if [[ -d "$ANDROID_SDK" ]]; then
+  export ANDROID_SDK=$ANDROID_SDK
+  export ANDROID_SDK_ROOT=$ANDROID_SDK
+
+  export PATH=\
+$ANDROID_SDK/platform-tools:\
+$ANDROID_SDK/emulator:\
+$ANDROID_SDK/tools/bin:\
+$ANDROID_SDK/tools:\
+$PATH
+
+fi
+
 # disable homebrew auto update
 export HOMEBREW_NO_AUTO_UPDATE=1
 
