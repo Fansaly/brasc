@@ -44,6 +44,11 @@ else
 
   if [[ -f "${PRIVACY_DIR}/alias/alias.sh" ]]; then
     source "${PRIVACY_DIR}/alias/alias.sh"
+
+    # setup proxy server
+    command -v proxy &>/dev/null && {
+      proxy set --force
+    }
   fi
 
   # enter workspace
