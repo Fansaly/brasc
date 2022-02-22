@@ -8,8 +8,24 @@ command -v nodenv &>/dev/null && {
   eval "$(nodenv init -)"
 }
 
+
+# specify workspace path
 PROJECTS_DIR="$HOME/Projects"
 
-if [[ -f "${PROJECTS_DIR}/alias/alias.sh" ]]; then
-  source "${PROJECTS_DIR}/alias/alias.sh"
+if [[ ! -d "$PROJECTS_DIR" ]]; then
+  unset PROJECTS_DIR
+else
+  # load custom scripts
+  PRIVACY_DIR="$PROJECTS_DIR"
+
+  if [[ -d "$PROJECTS_DIR/Privacy" ]]; then
+    PRIVACY_DIR="$PROJECTS_DIR/Privacy"
+  fi
+
+  if [[ -f "${PRIVACY_DIR}/alias/alias.sh" ]]; then
+    source "${PRIVACY_DIR}/alias/alias.sh"
+  fi
+
+  # enter workspace
+  cd "$PROJECTS_DIR"
 fi
