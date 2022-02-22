@@ -2,6 +2,11 @@
 #
 # enable system apps menu extra
 
+currentDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+scriptsDIR=$currentDIR/../../.scripts
+
+source "$scriptsDIR/count.sh"
+
 function getCorrectMenuName() {
   local menu="$1"
   local correct_menu=$( \
@@ -49,11 +54,10 @@ function setMenuExtrasArray() {
     plutil -replace "xml-key" -xml "$xmlCtx" -o - - \
   )
 
-  count=$(echo "$xmlCtx" | xpath "count(//array/string)" 2>/dev/null)
-  [[ ! "$count" =~ ^[0-9]+$ ]] && count=0
+  local total=$(echo "$xmlCtx" | count "//array/string")
 
-  if [[ $count -gt 0 ]]; then
-    for (( i = 0; i < $count; i++ )); do
+  if [[ $total -gt 0 ]]; then
+    for (( i = 0; i < $total; i++ )); do
       local _VAL_=$( \
         echo "$xmlCtx" | \
         plutil -extract "xml-key.$i" xml1 -o - - | \
@@ -68,8 +72,8 @@ function setMenuExtrasArray() {
           xmlCtx=$(echo "$xmlCtx" | plutil -remove "xml-key.$i" -o - -)
         fi
         break
-      elif [[ $(( $i + 1 )) -eq $count && "$action" == "enable" ]]; then
-        xmlCtx=$(echo "$xmlCtx" | plutil -insert "xml-key.$count" -string "$xmlVal" -o - -)
+      elif [[ $(( $i + 1 )) -eq $total && "$action" == "enable" ]]; then
+        xmlCtx=$(echo "$xmlCtx" | plutil -insert "xml-key.$total" -string "$xmlVal" -o - -)
       fi
     done
   elif [[ "$action" == "enable" ]]; then

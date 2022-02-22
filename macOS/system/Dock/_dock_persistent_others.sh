@@ -3,6 +3,11 @@
 # Dock - persistent others
 # Custom Dock's persistent `Downloads' style
 
+currentDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+scriptsDIR=$currentDIR/../../.scripts
+
+source "$scriptsDIR/count.sh"
+
 prefDIR=~/Library/Preferences
 domain=com.apple.dock
 plist=$prefDIR/$domain.plist
@@ -14,10 +19,9 @@ org_persistent_others=$( \
 )
 new_persistent_others="$org_persistent_others"
 
-count=$(echo "$new_persistent_others" | xpath "count(//array/dict)" 2>/dev/null)
-[[ ! "$count" =~ ^[0-9]+$ ]] && count=0
+total=$(echo "$new_persistent_others" | count "//array/dict")
 
-for (( i = 0; i < $count; i++ )); do
+for (( i = 0; i < $total; i++ )); do
   entry=persistent-others.$i
   label=$( \
     echo "$new_persistent_others" | \
