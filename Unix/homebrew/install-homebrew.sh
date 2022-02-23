@@ -5,32 +5,17 @@ if [[ -n $(command -v brew) ]]; then
 fi
 
 
-function isLinux() {
-  if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    echo "os: linux"
-  fi
-}
-
-function config_homebrew_environment() {
-  if [[ -z "$(isLinux)" ]]; then
-    return 0
-  fi
-
-  # config homebrew environment
-  profile=~/.profile
-  cat "$profile" | grep "linuxbrew" >/dev/null 2>&1 || {
-    echo -e "\n# homebrew environment" >> "$profile"
-    echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> "$profile"
-  }
-}
-
 # install homebrew for macOS and Linux
 function install_homebrew() {
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-  if [[ $? -ne 0 ]]; then return 1; fi
+  local code=5
 
-  config_homebrew_environment
-  return 5
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+  if [[ $? -ne 0 ]]; then
+    code=1
+  fi
+
+  return $code
 }
 
 install_homebrew

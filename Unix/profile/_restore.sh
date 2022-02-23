@@ -16,6 +16,7 @@ fi
 
 cp "${fileDIR}/._profile_" ~/
 chmod 644 ~/._profile_
+source ~/._profile_
 
 cat "$profile" | grep "source ~/._profile_" >/dev/null 2>&1 || {
   echo -e "\nsource ~/._profile_" >> "$profile"

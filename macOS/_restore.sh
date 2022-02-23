@@ -11,6 +11,28 @@ unixDIR=$masterDIR/../Unix
 unset RESTART_SHELL
 
 
+ECHO "create" "some profile"
+source "$unixDIR/_create/_create.sh"
+
+ECHO "config" "profile"
+source "$unixDIR/profile/_restore.sh"
+
+echo
+
+ECHO "config" "vim"
+source "$unixDIR/vim/_restore.sh"
+
+ECHO "config" "git"
+source "$unixDIR/git/_restore.sh"
+
+ECHO "config" "ssh key"
+source "$unixDIR/ssh/_restore.sh"
+
+echo
+
+ECHO "setting" "Terminal"
+source "$systemDIR/Terminal/_restore.sh"
+
 ECHO "setting" "Clock display style"
 source "$systemDIR/Clock/_restore.sh" --norestart
 
@@ -27,37 +49,19 @@ killall Dock
 ECHO "setting" "Finder"
 source "$systemDIR/Finder/_restore.sh"
 
-
-ECHO "create" "some profile"
-source "$unixDIR/_create/_create.sh"
-
-ECHO "config" "profile"
-source "$unixDIR/profile/_restore.sh"
-
-ECHO "config" "vim"
-source "$unixDIR/vim/_restore.sh"
-
-ECHO "config" "git"
-source "$unixDIR/git/_restore.sh"
-
-ECHO "config" "ssh key"
-source "$unixDIR/ssh/_restore.sh"
-
-ECHO "setting" "Terminal"
-source "$systemDIR/Terminal/_restore.sh"
-
+echo
 
 ECHO "install" "oh-my-zsh"
 source "$unixDIR/oh-my-zsh/install.sh"
 OhMyZshCode=$?
 
-# ECHO "install" "nodenv (nvm)"
-# source "$unixDIR/nodenv/install.sh"
-# [[ $? -eq 5 ]] && RESTART_SHELL=true
-
 ECHO "install" "homebrew and packages"
 source "$unixDIR/homebrew/install.sh"
 [[ $? -eq 5 ]] && RESTART_SHELL=true
+
+# ECHO "install" "nodenv (nvm)"
+# source "$unixDIR/nodenv/install.sh"
+# [[ $? -eq 5 ]] && RESTART_SHELL=true
 
 
 ECHO "config" "Sublime Text"

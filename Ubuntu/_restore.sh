@@ -9,6 +9,25 @@ unixDIR=$masterDIR/../Unix
 unset RESTART_SHELL
 
 
+ECHO "create" "some profile"
+source "$unixDIR/_create/_create.sh"
+
+ECHO "config" "profile"
+source "$unixDIR/profile/_restore.sh"
+
+echo
+
+ECHO "config" "vim"
+source "$unixDIR/vim/_restore.sh"
+
+ECHO "config" "git"
+source "$unixDIR/git/_restore.sh"
+
+ECHO "config" "ssh key"
+source "$unixDIR/ssh/_restore.sh"
+
+echo
+
 ECHO "config" "sources list"
 source "$masterDIR/sources.list/_restore.sh"
 
@@ -18,6 +37,7 @@ source "$masterDIR/packages/install.sh"
 ECHO "setting" "locale"
 source "$masterDIR/locale/_restore.sh"
 
+echo
 
 ECHO "install" "oh-my-zsh"
 source "$unixDIR/oh-my-zsh/install.sh"
@@ -30,22 +50,6 @@ source "$unixDIR/homebrew/install.sh"
 # ECHO "install" "nodenv (nvm)"
 # source "$unixDIR/nodenv/install.sh"
 # [[ $? -eq 5 ]] && RESTART_SHELL=true
-
-
-ECHO "create" "some profile"
-source "$unixDIR/_create/_create.sh"
-
-ECHO "config" "profile"
-source "$unixDIR/profile/_restore.sh"
-
-ECHO "config" "vim"
-source "$unixDIR/vim/_restore.sh"
-
-ECHO "config" "git"
-source "$unixDIR/git/_restore.sh"
-
-ECHO "config" "ssh key"
-source "$unixDIR/ssh/_restore.sh"
 
 
 echo
