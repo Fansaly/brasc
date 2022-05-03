@@ -94,8 +94,8 @@ Write-Tips 'restore', 'Windows Terminal'
 . "${systemPath}\Terminal\_restore.ps1"
 
 # apps configuration
-Write-Tips 'setting', 'Shadowsocks'
-. "${appsPath}\Shadowsocks\_restore.ps1"
+Write-Tips 'setting', 'Clash'
+. "${appsPath}\Clash\_restore.ps1"
 
 Write-Tips 'setting', 'Sublime Text'
 . "${appsPath}\SublimeText\_restore.ps1"
