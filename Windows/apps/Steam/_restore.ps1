@@ -1,4 +1,4 @@
-$steamServiceApp = 'D:\Program Files\Steam\bin\steamservice.exe'
+$steamServiceApp = 'D:\Applications\Steam\bin\steamservice.exe'
 if (![IO.File]::Exists($steamServiceApp)) {
   Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
   Write-Host "``SteamService.exe' application doesn't exist." -ForegroundColor Yellow

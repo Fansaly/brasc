@@ -4,8 +4,8 @@ $PSScriptsPath = (Get-Item -Path $PSScriptRoot).Parent.Parent.FullName + '\.PSSc
 
 
 $installPaths = @(
-  "$env:LocalAppdata\Program Files\Shadowsocks",
-  'D:\Program Files\Shadowsocks'
+  "$env:LocalAppdata\Applications\Shadowsocks",
+  'D:\Applications\Shadowsocks'
 )
 
 $installPaths | % {

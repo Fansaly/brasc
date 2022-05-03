@@ -9,7 +9,7 @@ $PSScriptsPath = (Get-Item -Path $ScriptFilePath).Parent.Parent.FullName + '\.PS
 if (!$(Get-PermissionStatus)) { exit }
 
 
-$installPath = 'D:\Program Files\Sublime Text 3'
+$installPath = 'D:\Applications\Sublime Text 3'
 $sublimeApp = "$installPath\sublime_text.exe"
 
 if (![IO.File]::Exists($sublimeApp)) {
