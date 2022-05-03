@@ -6,6 +6,7 @@ $PSScriptsPath = (Get-Item -Path $ScriptFilePath).Parent.Parent.FullName + '\.PS
 . "${PSScriptsPath}\Confirm-YesOrNo.ps1"
 . "${PSScriptsPath}\Get-DisplayInfo.ps1"
 . "${PSScriptsPath}\Get-UIPlacement.ps1"
+. "${ScriptFilePath}\Get-Size.ps1"
 
 
 $configFile = "${ScriptFilePath}\config.psd1"
@@ -37,7 +38,9 @@ if ($status) {
 
 function Set-7zFMPlacement {
   $DisplayInfo = Get-PrimaryDisplayInfo
-  $UIPlacement = Get-UIPlacement -DisplayInfo $DisplayInfo -UISizes $config.UI.Sizes
+
+  $Sizes = Get-Size -DisplayInfo $DisplayInfo -UISizes $config.UI.Sizes
+  $UIPlacement = Get-UIPlacement -DisplayInfo $DisplayInfo -UISizes $Sizes
 
   $PlacementLeft   = $UIPlacement.Left
   $PlacementRight  = $UIPlacement.Right
