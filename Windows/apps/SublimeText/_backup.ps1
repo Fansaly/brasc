@@ -1,8 +1,12 @@
-$configPath = "${PSScriptRoot}\config"
-$installPath = 'D:\Applications\Sublime Text 3'
-$packagesUserPath = "${installPath}\Data\Packages\User"
+. "${PSScriptRoot}\Get-Config.ps1"
 
-if (!(Test-Path "$packagesUserPath")) { exit }
+$config = Get-Config
+
+if ($config.Count -eq 0 -or !(Test-Path $config.packagesUserPath)) { exit }
+
+$configPath = $config.configPath
+$installPath = $config.installPath
+$packagesUserPath = $config.packagesUserPath
 
 # Sublime project config file
 Copy-Item -Path "$installPath\*.sublime-project" -Destination "$configPath\"
