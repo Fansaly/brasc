@@ -7,27 +7,23 @@ $PSScriptsPath = (Get-Item -Path $ScriptFilePath).Parent.Parent.FullName + '\.PS
 . "${PSScriptsPath}\Get-DisplayInfo.ps1"
 . "${PSScriptsPath}\Get-UIPlacement.ps1"
 . "${PSScriptsPath}\Merge-Object.ps1"
+. "${ScriptFilePath}\Get-Size.ps1"
 
 
 $global:DisplayInfo = Get-PrimaryDisplayInfo
 
-$ConfigFileCommon  = "${ScriptFilePath}\config.common.psd1"
-$ConfigFileDefault = "${ScriptFilePath}\config.1920x1080.psd1"
-$ConfigFileRequire = "${ScriptFilePath}\config.$($DisplayInfo.Resolution).psd1"
+$ConfigCommonFile  = "${ScriptFilePath}\config.common.psd1"
+$ConfigSizeFile = "${ScriptFilePath}\config.$($DisplayInfo.Resolution).psd1"
 
-if ([IO.File]::Exists($ConfigFileRequire)) {
-  $ConfigFile = $ConfigFileRequire
-} elseif ([IO.File]::Exists($ConfigFileDefault)) {
-  $ConfigFile = $ConfigFileDefault
+$ConfigCommon = Import-PowerShellDataFile $ConfigCommonFile
+
+if ([IO.File]::Exists($ConfigSizeFile)) {
+  $ConfigSize = Import-PowerShellDataFile $ConfigSizeFile
 } else {
-  Write-Message "``WinRAR' config file doesn't exist."
-  exit
+  $ConfigSize = Get-Size -DisplayInfo $DisplayInfo
 }
 
-$ConfigCommon  = Import-PowerShellDataFile $ConfigFileCommon
-$ConfigRequire = Import-PowerShellDataFile $ConfigFile
-
-$global:config = Merge-Object $ConfigCommon $ConfigRequire
+$global:config = Merge-Object $ConfigCommon $ConfigSize
 
 if (!(Test-Path -Path $config.RegPath)) {
   Write-Message "Not yet installed ``WinRAR'."
