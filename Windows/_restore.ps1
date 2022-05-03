@@ -44,12 +44,6 @@ Write-Tips 'setting', 'partition DriveLetter and Volume'
 Write-Tips 'create', 'applications shortcut'
 . "${systemPath}\CreateShortcut\_restore.ps1"
 
-Write-Tips 'restore', 'Notifications Action Center'
-. "${systemPath}\Notifications_Action_Center\_restore.ps1"
-
-Write-Tips 'restore', 'StartLayout'
-. "${systemPath}\StartLayout\_restore.ps1" -NoRestart
-
 Write-Tips 'setting', 'Taskbar'
 . "${systemPath}\Taskbar\_restore.ps1" -NoRestart
 
@@ -65,8 +59,8 @@ Write-Tips 'setting', 'Language'
 # restart Windows Explorer
 Stop-Process -Name 'explorer'
 
-Write-Tips 'setting', 'UTC'
-. "${systemPath}\Time\_UTC.ps1"
+# Write-Tips 'setting', 'UTC'
+# . "${systemPath}\Time\_UTC.ps1"
 
 Write-Tips 'add', 'Time Zone Clock'
 . "${systemPath}\Time\_AddClock.ps1"
@@ -76,9 +70,6 @@ Write-Tips 'remove', 'appx'
 
 Write-Tips 'setting', 'OneDrive'
 . "${systemPath}\OneDrive\_restore.ps1"
-
-Write-Tips 'restore', 'TaskManager'
-. "${systemPath}\TaskManager\_restore.ps1"
 
 Write-Tips 'install', 'Fonts'
 . "${systemPath}\Fonts\_install.ps1"
