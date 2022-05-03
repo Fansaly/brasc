@@ -1,22 +1,24 @@
 {
-	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Palenight.tmTheme",
 	"folder_exclude_patterns":
 	[
 		".svn",
 		".git",
 		".hg",
 		"CVS",
-		"node_modules"
+		".Trash",
+		".Trash-*",
+		"node_modules",
 	],
 	"font_face": "Microsoft YaHei Mono",
 	"font_size": 13,
-	"ignored_packages":
-	[
-		"JavaScript",
-		"Vintage"
-	],
 	"open_files_in_new_window": false,
 	"tab_size": 2,
-	"theme": "Material-Theme.sublime-theme",
-	"translate_tabs_to_spaces": true
+	"theme": "Material-Theme-Palenight.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"auto_complete": true,
+	"ignored_packages":
+	[
+		"Vintage",
+	],
 }
