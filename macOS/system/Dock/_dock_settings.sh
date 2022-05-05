@@ -1,6 +1,4 @@
 #!/bin/bash
-#
-# Dock - settings
 
 currentDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 scriptsDIR=$currentDIR/../../.scripts
@@ -14,6 +12,19 @@ plist=$prefDIR/$domain.plist
 orgXmlCtx=$(plutil -convert xml1 -o - "$plist")
 newXmlCtx="$orgXmlCtx"
 
+
+# SysPref -> General
+# ===================
+# Preder tabs: when opening documents
+# ----------------------------------
+# always     => always
+# fullscreen => in full screen
+# manual     => never
+defaults write -globalDomain "AppleWindowTabbingMode" -string "fullscreen"
+
+
+# SysPref -> Dock & Menu bar
+# ===========================
 # Position
 newXmlCtx=$(irXml "orientation" -string "bottom" "$newXmlCtx")
 
@@ -22,13 +33,6 @@ newXmlCtx=$(irXml "orientation" -string "bottom" "$newXmlCtx")
 # genie => Genie effect
 # scale => Scale effect
 newXmlCtx=$(irXml "mineffect" -string "genie" "$newXmlCtx")
-
-# Preder tabs when opening documents
-# ----------------------------------
-# always     => Always
-# fullscreen => In Full Screen Only
-# manual     => Manually
-defaults write -globalDomain "AppleWindowTabbingMode" -string "fullscreen"
 
 # Double-click window's title bar
 # -------------------------------
@@ -52,13 +56,8 @@ newXmlCtx=$(irXml "show-process-indicators" -bool YES "$newXmlCtx")
 newXmlCtx=$(irXml "show-recents" -bool NO "$newXmlCtx")
 
 
-# Dashboard
-# ---------
-# 1 => Off
-# 2 => As Space
-# 3 => As Overlay
-defaults write com.apple.dashboard "dashboard-enabled-state" -integer 3
-
+# SysPref -> Mission Control
+# ===========================
 # Hot Corners
 # ---------------------------
 # Mission Control      =>  2
