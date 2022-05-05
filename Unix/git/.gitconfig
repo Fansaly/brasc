@@ -1,6 +1,8 @@
+[init]
+	defaultBranch = main
+[core]
+	editor = vim
+	quotepath = false
 [user]
 	name = fansaly
 	email = fansaly@gmail.com
-[core]
-	quotepath = false
-	editor = vim
