@@ -12,14 +12,17 @@ plist=$prefDIR/$domain.plist
 orgXmlCtx=$(plutil -convert xml1 -o - "$plist")
 newXmlCtx="$orgXmlCtx"
 
-# siderbar width
+# allow quitting via ⌘ + Q
+newXmlCtx=$(irXml "QuitMenuItem" -bool True "$newXmlCtx")
+
+# sidebar width
 newXmlCtx=$(irXml "SidebarWidth" -float 190 "$newXmlCtx")
 
 # new window
 newXmlCtx=$(irXml "NewWindowTarget" -string "PfHm" "$newXmlCtx")
 newXmlCtx=$(irXml "NewWindowTargetPath" -string "file://$HOME/" "$newXmlCtx")
 
-# siderbar Tags
+# sidebar Tags
 newXmlCtx=$(irXml "ShowRecentTags" -bool False "$newXmlCtx")
 newXmlCtx=$(irXml "SidebarTagsSctionDisclosedState" -bool False "$newXmlCtx")
 
@@ -29,8 +32,9 @@ newXmlCtx=$(irXml "StandardViewSettings.IconViewSettings.arrangeBy" -string "Nam
 
 # desktop devices icon <hide all>
 newXmlCtx=$(irXml "ShowExternalHardDrivesOnDesktop" -bool False "$newXmlCtx")
-newXmlCtx=$(irXml "ShowRemovableMediaOnDesktop" -bool False "$newXmlCtx")
 newXmlCtx=$(irXml "ShowHardDrivesOnDesktop" -bool False "$newXmlCtx")
+newXmlCtx=$(irXml "ShowMountedServersOnDesktop" -bool False "$newXmlCtx")
+newXmlCtx=$(irXml "ShowRemovableMediaOnDesktop" -bool False "$newXmlCtx")
 
 # desktop sort type <Grid>
 newXmlCtx=$(irXml "DesktopViewSettings.IconViewSettings.arrangeBy" -string "grid" "$newXmlCtx")
