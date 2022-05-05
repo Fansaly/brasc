@@ -1,4 +1,5 @@
 @(
+  'Microsoft.BingNews',
   'Microsoft.Office.OneNote',
   'Microsoft.MicrosoftOfficeHub',
 
