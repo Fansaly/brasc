@@ -13,6 +13,9 @@ function install_homebrew() {
 
   if [[ $? -ne 0 ]]; then
     code=1
+  elif [[ -f "$PREFIX_BREW/bin/brew" ]]; then
+    # make brew available on linux
+    eval "$($PREFIX_BREW/bin/brew shellenv)"
   fi
 
   return $code
