@@ -29,6 +29,7 @@ if (!$partitions.ContainsKey($computerName)) { exit }
 
 
 # setting partitions DriveLetter
+$drives = [byte][char]'C' .. [byte][char]'Z' | % { [char]$_ }
 $targetPartitions = $partitions.Item($computerName)
 
 $diffPartitions = $targetPartitions | ? {
@@ -42,35 +43,35 @@ $diffPartitions = $targetPartitions | ? {
   }
 }
 
-if ($diffPartitions) {
-  $drivesUsed = (Get-Volume).DriveLetter -match '\w'
+if (!$diffPartitions) { exit }
 
-  $drivesAssignment = $diffPartitions | % { $_.DriveLetter }
+$drivesUsed = (Get-Volume).DriveLetter -match '\w'
+$drivesAssignment = $diffPartitions | % { $_.DriveLetter }
 
-  $drives = [byte][char]'C' .. [byte][char]'Z' | % { [char]$_ }
+$drivesUsable = $drives -match "[^$drivesUsed]" -match "[^$drivesAssignment]"
+$drivesUsable = Get-Random $drivesUsable -Count $drivesAssignment.Count
 
-  $drivesUsable = $drives -match "[^$drivesUsed]" -match "[^$drivesAssignment]"
-  $drivesUsable = Get-Random $drivesUsable -Count $drivesAssignment.Count
+if ($diffPartitions -is [array]) {
+  $diffPartitions | % -Begin { $i = 0 } -Process {
+    $_disk = $_.DiskNumber
+    $_partition = $_.PartitionNumber
 
-  if ($diffPartitions -is [array]) {
-    $diffPartitions | % -Begin { $i = 0 } -Process {
-      $_disk = $_.DiskNumber
-      $_partition = $_.PartitionNumber
+    Set-Partition -DiskNumber $_disk -PartitionNumber $_partition -NewDriveLetter $drivesUsable[$i++]
+  } -End { Remove-Variable i }
+}
 
-      Get-Partition -DiskNumber $_disk -PartitionNumber $_partition | Set-Partition -NewDriveLetter $drivesUsable[$i++]
-    } -End { Remove-Variable i }
+$diffPartitions | % -Begin { $drivesUsed = (Get-Volume).DriveLetter -match '\w' } -Process {
+  $_disk      = $_.DiskNumber
+  $_partition = $_.PartitionNumber
+  $_drive     = $_.DriveLetter
+  $_volume    = $_.FileSystemLabel
+
+  $currentPartition = Get-Partition -DiskNumber $_disk -PartitionNumber $_partition
+  if ($_drive -ne $currentPartition.DriveLetter -and -not $drivesUsed.Contains([char]$_drive)) {
+    $currentPartition | Set-Partition -NewDriveLetter $_drive
   }
 
-  $diffPartitions | % -Begin { $drivesUsed = (Get-Volume).DriveLetter -match '\w' } -Process {
-    $_disk      = $_.DiskNumber
-    $_partition = $_.PartitionNumber
-    $_drive     = $_.DriveLetter
-    $_volume    = $_.FileSystemLabel
-
-    if ($drivesUsed.Contains([char]$_drive)) {
-      Write-Message "Drive ${_drive}: has been assigned."
-    } else {
-      Get-Partition -DiskNumber $_disk -PartitionNumber $_partition | Set-Partition -NewDriveLetter $_drive
-    }
+  if ($_volume -ne $currentPartition.FileSystemLabel) {
+    Set-Volume -DriveLetter $_drive -NewFileSystemLabel $_volume
   }
 }

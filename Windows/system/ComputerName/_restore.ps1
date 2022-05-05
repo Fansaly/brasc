@@ -6,8 +6,7 @@ if (!$(Get-PermissionStatus)) { exit }
 
 
 $names = @{
-  '{8e05b879-04de-4043-9772-5c8f137575b1}' = 'STRIX'
-  '{77a5779c-3a64-457e-b588-413369dc970e}' = 'LENOVO'
+  '{28c6c309-dffb-4ebb-b053-319479331354}' = 'XiaoXinPro'
 }
 
 $computerActiveName = Get-ItemPropertyValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Computername\ActiveComputerName' -Name 'Computername'
