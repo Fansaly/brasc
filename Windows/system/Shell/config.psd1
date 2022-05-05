@@ -8,7 +8,7 @@ Console = @{
   FontSize = 20
   WindowSize = @{
     width = 120
-    height = 30
+    height = 32
   }
   WindowAlpha = 90
 }
