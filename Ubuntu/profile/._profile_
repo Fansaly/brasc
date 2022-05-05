@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export LANG="C"
+# http://manpages.ubuntu.com/manpages/jammy/man5/locale.5.html
+export LANG="C.UTF-8"
 export LC_CTYPE="zh_CN.UTF-8"
 export LC_COLLATE="zh_CN.UTF-8"
 

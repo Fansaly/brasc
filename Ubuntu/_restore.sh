@@ -9,6 +9,17 @@ unixDIR=$masterDIR/../Unix
 unset RESTART_SHELL
 
 
+ECHO "config" "sources list"
+source "$masterDIR/sources.list/_restore.sh"
+
+ECHO "install" "packages (apt-get)"
+source "$masterDIR/packages/install.sh"
+
+ECHO "setting" "locale"
+source "$masterDIR/locale/_restore.sh"
+
+echo
+
 ECHO "create" "some profile"
 source "$unixDIR/_create/_create.sh"
 
@@ -25,17 +36,6 @@ source "$unixDIR/git/_restore.sh"
 
 ECHO "config" "ssh key"
 source "$unixDIR/ssh/_restore.sh"
-
-echo
-
-ECHO "config" "sources list"
-source "$masterDIR/sources.list/_restore.sh"
-
-ECHO "install" "packages (apt-get)"
-source "$masterDIR/packages/install.sh"
-
-ECHO "setting" "locale"
-source "$masterDIR/locale/_restore.sh"
 
 echo
 
