@@ -1,19 +1,18 @@
 #!/bin/bash
 
 packages=(
-  # compile packages, e.g.:
-  # some packages from homebrew
   "gcc"
   "zip"
   "unzip"
   "tree"
   "zsh"
+  "wslu"
 )
 
 todo=()
 
 for package in ${packages[@]}; do
-  result=$(dpkg-query -W -f='${Package}: ${Status} ${Version}' $package)
+  result=$(dpkg-query -W -f='${Package}: ${Status} ${Version}' $package 2>/dev/null)
   code=$?
 
   if [[ "$result" =~ "not-installed" || $code -ne 0 ]]; then
