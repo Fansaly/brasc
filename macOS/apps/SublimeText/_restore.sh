@@ -3,7 +3,7 @@
 currentDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 config_dir="$currentDIR/config"
 
-sublime_dir="$HOME/Library/Application Support/Sublime Text 3"
+sublime_dir="$HOME/Library/Application Support/Sublime Text"
 installed_packages_dir="$sublime_dir/Installed Packages"
 
 if [[ ! -d "$installed_packages_dir" ]]; then
@@ -21,7 +21,7 @@ if [[ -f "$installed_packages_dir/$package_control_file" ]]; then
 fi
 
 package_control_url="https://packagecontrol.io/Package Control.sublime-package"
-proxy_server=socks5://127.0.0.1:1080
+proxy_server=socks5://127.0.0.1:7890
 
 curl -x $proxy_server -kfsIL "$package_control_url" >/dev/null
 

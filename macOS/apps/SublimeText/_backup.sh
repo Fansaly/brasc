@@ -2,7 +2,7 @@
 
 currentDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 config_dir="$currentDIR/config"
-sublime_dir="$HOME/Library/Application Support/Sublime Text 3"
+sublime_dir="$HOME/Library/Application Support/Sublime Text"
 
 # Sublime project config file
 cp "$sublime_dir/"*.sublime-project "$config_dir"

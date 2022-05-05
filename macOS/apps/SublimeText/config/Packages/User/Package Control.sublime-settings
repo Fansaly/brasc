@@ -6,28 +6,24 @@
 	"installed_packages":
 	[
 		"ASL Syntax Highlight",
-		"Babel",
+		"BracketHighlighter",
 		"ConvertToUTF8",
 		"CSS Format",
 		"CSS Snippets",
 		"EditorConfig",
+		"ElixirSyntax",
 		"Emmet",
 		"FileDiffs",
 		"LESS",
 		"Material Theme",
 		"Package Control",
 		"PowerShell",
-		"ReactJS",
 		"Sass",
 		"SASS Snippets",
 		"Stylus",
-		"Stylus-Snippets",
+		"Stylus Clean Completions",
 		"TrailingSpaces",
-		"TypeScript",
-		"TypeScript Syntax",
-		"TypescriptCompletion",
 		"VBScript",
 		"Vue Syntax Highlight",
-		"Vuejs Snippets"
-	]
+	],
 }
