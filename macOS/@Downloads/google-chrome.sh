@@ -4,4 +4,4 @@
 url=https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
 output_file=googlechrome.dmg
 
-curl -fSL "$url" -o "${output_file}"
+curl -fSL "$url" -o "$output_file"
