@@ -11,6 +11,12 @@ unixDIR=$masterDIR/../Unix
 unset RESTART_SHELL
 
 
+source "$masterDIR/_check_xcode.sh"
+[[ $? -ne 0 ]] && {
+  return 1 &>/dev/null || exit 1
+}
+
+
 FLAG=$@
 F_COMMON=true
 F_LAUNCHPAD=false
