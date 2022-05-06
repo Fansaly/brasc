@@ -1,3 +1,12 @@
-nodenv
+node
+
+# pkg manager
+# corepack
 yarn
+pnpm
+
+# nvm
+fnm
+nodenv
+
 imagemagick

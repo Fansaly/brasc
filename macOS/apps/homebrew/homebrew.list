@@ -1,6 +1,12 @@
-# developer tools
-pnpm
+node
+
+# pkg manager
+# corepack
 yarn
+pnpm
+
+# nvm
+fnm
 nodenv
 
 # paste PNG into files
@@ -9,8 +15,8 @@ pngpaste
 # display directories as trees
 tree
 
-# Simple hotkey-daemon for macOS
-skhd
+# simple hotkey-daemon for macOS
+koekeishiya/formulae/skhd
 
 # media tools
 ffmpeg

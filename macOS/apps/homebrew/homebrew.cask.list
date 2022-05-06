@@ -4,15 +4,15 @@ docker
 android-studio
 adoptopenjdk/openjdk/adoptopenjdk8
 
-firefox
+# firefox
 postman
 hbuilderx
 wechatwebdevtools
 mark-text
 
 # proxy
-surge
-clashx
+# surge
+# clashx
 
 # file archiver
 keka
