@@ -19,6 +19,8 @@ function Get-Config {
         installedPackagesPath = "${installPath}\Data\Installed Packages"
         packagesUserPath = "${installPath}\Data\Packages\User"
         packageControlFile = "Package Control.sublime-package"
+        packageControlUrl = "https://packagecontrol.io/Package%20Control.sublime-package"
+        proxyServer = "socks5://127.0.0.1:7890"
       }
 
       return

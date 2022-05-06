@@ -20,7 +20,7 @@ if [[ -f "$installed_packages_dir/$package_control_file" ]]; then
   return 0 &>/dev/null || exit 0
 fi
 
-package_control_url="https://packagecontrol.io/Package Control.sublime-package"
+package_control_url="https://packagecontrol.io/Package%20Control.sublime-package"
 proxy_server=socks5://127.0.0.1:7890
 
 curl -x $proxy_server -kfsIL "$package_control_url" >/dev/null

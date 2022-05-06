@@ -40,8 +40,8 @@ $installedPackagesPath = $config.installedPackagesPath
 
 if ([IO.File]::Exists("$installedPackagesPath/$packageControlFile")) { exit }
 
-$packageControlUrl = "https://packagecontrol.io/$packageControlFile"
-$proxyServer = 'socks5://127.0.0.1:7890'
+$packageControlUrl = $config.packageControlUrl
+$proxyServer = $config.proxyServer
 
 curl.exe -x $proxyServer -kfsIL "$packageControlUrl" | Out-Null
 
