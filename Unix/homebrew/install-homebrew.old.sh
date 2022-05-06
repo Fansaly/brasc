@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [[ -n $(command -v brew) ]]; then
+brew -v >/dev/null 2>&1 && {
   return 0 &>/dev/null || exit 0
-fi
+}
 
 
 function isLinux() {

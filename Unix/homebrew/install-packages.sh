@@ -45,14 +45,14 @@ function uninstalled() {
 }
 
 function install_packages() {
-  brew=$1
-  listDIR=$2
+  local listDIR=$1
+  local brew=brew
 
   if [[ -n $(command -v brew) ]]; then
     brew=$(command -v brew)
   fi
 
-  brew -v >/dev/null 2>&1 || {
+  "$brew" -v >/dev/null 2>&1 || {
     echo -e "\033[0;35mbrew\033[0m is not installed."
     return 1
   }
@@ -106,5 +106,4 @@ elif [[ "$OSTYPE" == "linux-gnu" ]]; then
   listDIR="$currentDIR/../../Ubuntu/homebrew"
 fi
 
-brew=$(which brew)
-install_packages "$brew" "$listDIR"
+install_packages "$listDIR"
