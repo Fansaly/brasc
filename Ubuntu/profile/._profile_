@@ -8,13 +8,13 @@ export LC_COLLATE="zh_CN.UTF-8"
 # disable homebrew auto update
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-# configure homebrew
+# homebrew
 PREFIX_BREW="/home/linuxbrew/.linuxbrew"
 if [[ -f "$PREFIX_BREW/bin/brew" ]]; then
   eval "$($PREFIX_BREW/bin/brew shellenv)"
 fi
 
-# configure environment for nodenv
+# nodenv
 command -v nodenv &>/dev/null && {
   eval "$(nodenv init -)"
 }
@@ -23,7 +23,7 @@ command -v nodenv &>/dev/null && {
 # specify workspace path
 PROJECTS_DIR=
 PROJECTS_DIRS=(
-  "${HOME}/Projects"
+  "$HOME/Projects"
   "/mnt/d/Projects"
   "/mnt/e/Projects"
 )
@@ -40,7 +40,7 @@ done
 
 if [[ ! -d "$PROJECTS_DIR" ]]; then
   WINHOME=$(wslpath "$(wslvar USERPROFILE)")
-  PROJECTS_DIR=${WINHOME}/Downloads/Projects
+  PROJECTS_DIR=$WINHOME/Downloads/Projects
 fi
 
 
@@ -54,8 +54,8 @@ else
     PRIVACY_DIR="$PROJECTS_DIR/Privacy"
   fi
 
-  if [[ -f "${PRIVACY_DIR}/alias/alias.sh" ]]; then
-    source "${PRIVACY_DIR}/alias/alias.sh"
+  if [[ -f "$PRIVACY_DIR/alias/alias.sh" ]]; then
+    source "$PRIVACY_DIR/alias/alias.sh"
 
     # setup proxy server
     command -v proxy &>/dev/null && {
@@ -63,6 +63,8 @@ else
     }
   fi
 
-  # enter workspace
-  cd "$PROJECTS_DIR"
+  # enter workspace only from home
+  if [[ "$(pwd)" == "$HOME" ]]; then
+    cd "$PROJECTS_DIR"
+  fi
 fi

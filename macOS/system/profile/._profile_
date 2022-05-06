@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Android development environment
+# android studio
 if [[ -d "$HOME/Library/Android/sdk" ]]; then
   ANDROID_SDK=$HOME/Library/Android/sdk
 elif [[ -d "$HOME/Android/Sdk" ]]; then
@@ -23,7 +23,7 @@ fi
 # disable homebrew auto update
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-# configure environment for nodenv
+# nodenv
 command -v nodenv &>/dev/null && {
   eval "$(nodenv init -)"
 }
@@ -42,8 +42,8 @@ else
     PRIVACY_DIR="$PROJECTS_DIR/Privacy"
   fi
 
-  if [[ -f "${PRIVACY_DIR}/alias/alias.sh" ]]; then
-    source "${PRIVACY_DIR}/alias/alias.sh"
+  if [[ -f "$PRIVACY_DIR/alias/alias.sh" ]]; then
+    source "$PRIVACY_DIR/alias/alias.sh"
 
     # setup proxy server
     command -v proxy &>/dev/null && {
@@ -51,6 +51,8 @@ else
     }
   fi
 
-  # enter workspace
-  cd "$PROJECTS_DIR"
+  # enter workspace only from home
+  if [[ "$(pwd)" == "$HOME" ]]; then
+    cd "$PROJECTS_DIR"
+  fi
 fi
