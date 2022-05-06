@@ -49,11 +49,8 @@ if [[ $F_COMMON == "true" ]]; then
 
   echo
 
-  ECHO "setting" "Terminal"
-  source "$systemDIR/Terminal/_restore.sh"
-
-  ECHO "setting" "Clock display style"
-  source "$systemDIR/Clock/_restore.sh" --norestart
+  ECHO "setting" "Date Time"
+  source "$systemDIR/Time/_restore.sh" --norestart
 
   ECHO "setting" "System menu extras"
   source "$systemDIR/SysMenuExtras/_restore.sh" --norestart
@@ -67,6 +64,9 @@ if [[ $F_COMMON == "true" ]]; then
 
   ECHO "setting" "Finder"
   source "$systemDIR/Finder/_restore.sh"
+
+  ECHO "setting" "Terminal"
+  source "$systemDIR/Terminal/_restore.sh"
 fi
 
 if [[ $F_LAUNCHPAD == "true" ]]; then
