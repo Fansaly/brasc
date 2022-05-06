@@ -52,10 +52,10 @@ function install_packages() {
     brew=$(command -v brew)
   fi
 
-  if [[ ! -f "$brew" ]]; then
+  brew -v >/dev/null 2>&1 || {
     echo -e "\033[0;35mbrew\033[0m is not installed."
     return 1
-  fi
+  }
 
   # get homebrew packages list files
   HBlist=($(find "$listDIR" -type f \( -name "homebrew.list" -o -name "homebrew.cask.list" \)))
