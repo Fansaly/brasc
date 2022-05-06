@@ -7,9 +7,13 @@ fi
 
 function help() {
   echo
-  echo "    -b    Backup current macOS and apps configuration."
-  echo "    -r    Restore macOS and apps configuration to current."
-  echo "    -d    Download some applications from internet."
+  echo "    -b <name>   Backup current macOS and apps configuration."
+  echo "                name is \`empty' execute common operations,"
+  echo "                name is all execute all operations,"
+  echo "                otherwise, execute operations related to name."
+  echo "    -r <name>   Restore macOS and apps configuration to current."
+  echo "                same above."
+  echo "    -d          Download some applications from internet."
   echo
   echo "    usage: ./$(basename $0) [-b | -r | -d]"
   echo
@@ -20,11 +24,11 @@ DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 while getopts brd opt; do
   case $opt in
     b)
-      source "$DIR/macOS/_backup.sh"
+      source "$DIR/macOS/_backup.sh" "${@//-$opt/}"
       exit $?
     ;;
     r)
-      source "$DIR/macOS/_restore.sh"
+      source "$DIR/macOS/_restore.sh" "${@//-$opt/}"
       exit $?
     ;;
     d)

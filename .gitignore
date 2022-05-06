@@ -1,2 +1,4 @@
 .DS_Store
 .ssh
+macOS/system/Launchpad/**
+!macOS/system/Launchpad/*.sh

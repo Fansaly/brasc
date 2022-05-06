@@ -11,61 +11,82 @@ unixDIR=$masterDIR/../Unix
 unset RESTART_SHELL
 
 
-ECHO "create" "some profile"
-source "$unixDIR/_create/_create.sh"
+FLAG=$@
+F_COMMON=true
+F_LAUNCHPAD=false
 
-ECHO "config" "profile"
-source "$unixDIR/profile/_restore.sh"
+if [[ $FLAG == "all" || $FLAG == "launchpad" ]]; then
+  F_LAUNCHPAD=true
+fi
+if [[ $FLAG == "launchpad" ]]; then
+  F_COMMON=false
+fi
+
+
+if [[ $F_COMMON == "true" ]]; then
+  ECHO "create" "some profile"
+  source "$unixDIR/_create/_create.sh"
+
+  ECHO "config" "profile"
+  source "$unixDIR/profile/_restore.sh"
+
+  echo
+
+  ECHO "config" "vim"
+  source "$unixDIR/vim/_restore.sh"
+
+  ECHO "config" "git"
+  source "$unixDIR/git/_restore.sh"
+
+  ECHO "config" "ssh key"
+  source "$unixDIR/ssh/_restore.sh"
+
+  echo
+
+  ECHO "setting" "Terminal"
+  source "$systemDIR/Terminal/_restore.sh"
+
+  ECHO "setting" "Clock display style"
+  source "$systemDIR/Clock/_restore.sh" --norestart
+
+  ECHO "setting" "System menu extras"
+  source "$systemDIR/SysMenuExtras/_restore.sh" --norestart
+
+  killall SystemUIServer
+
+  ECHO "setting" "Dock, Dashboard and Hot Corners"
+  source "$systemDIR/Dock/_restore.sh" --norestart
+
+  killall Dock
+
+  ECHO "setting" "Finder"
+  source "$systemDIR/Finder/_restore.sh"
+fi
+
+if [[ $F_LAUNCHPAD == "true" ]]; then
+  ECHO "restore" "Launchpad"
+  source "$systemDIR/Launchpad/_restore.sh"
+fi
 
 echo
 
-ECHO "config" "vim"
-source "$unixDIR/vim/_restore.sh"
+if [[ $F_COMMON == "true" ]]; then
+  ECHO "install" "oh-my-zsh"
+  source "$unixDIR/oh-my-zsh/install.sh"
+  OhMyZshCode=$?
 
-ECHO "config" "git"
-source "$unixDIR/git/_restore.sh"
+  ECHO "install" "homebrew and packages"
+  source "$unixDIR/homebrew/install.sh"
+  [[ $? -eq 5 ]] && RESTART_SHELL=true
 
-ECHO "config" "ssh key"
-source "$unixDIR/ssh/_restore.sh"
-
-echo
-
-ECHO "setting" "Terminal"
-source "$systemDIR/Terminal/_restore.sh"
-
-ECHO "setting" "Clock display style"
-source "$systemDIR/Clock/_restore.sh" --norestart
-
-ECHO "setting" "System menu extras"
-source "$systemDIR/SysMenuExtras/_restore.sh" --norestart
-
-killall SystemUIServer
-
-ECHO "setting" "Dock, Dashboard and Hot Corners"
-source "$systemDIR/Dock/_restore.sh" --norestart
-
-killall Dock
-
-ECHO "setting" "Finder"
-source "$systemDIR/Finder/_restore.sh"
-
-echo
-
-ECHO "install" "oh-my-zsh"
-source "$unixDIR/oh-my-zsh/install.sh"
-OhMyZshCode=$?
-
-ECHO "install" "homebrew and packages"
-source "$unixDIR/homebrew/install.sh"
-[[ $? -eq 5 ]] && RESTART_SHELL=true
-
-# ECHO "install" "nodenv (nvm)"
-# source "$unixDIR/nodenv/install.sh"
-# [[ $? -eq 5 ]] && RESTART_SHELL=true
+  # ECHO "install" "nodenv (nvm)"
+  # source "$unixDIR/nodenv/install.sh"
+  # [[ $? -eq 5 ]] && RESTART_SHELL=true
 
 
-ECHO "config" "Sublime Text"
-source "$appsDIR/SublimeText/_restore.sh"
+  ECHO "config" "Sublime Text"
+  source "$appsDIR/SublimeText/_restore.sh"
+fi
 
 
 echo
