@@ -65,6 +65,9 @@ if [[ $F_COMMON == "true" ]]; then
   ECHO "setting" "Finder"
   source "$systemDIR/Finder/_restore.sh"
 
+  ECHO "setting" "Firewall"
+  source "$systemDIR/Firewall/_restore.sh"
+
   ECHO "setting" "Terminal"
   source "$systemDIR/Terminal/_restore.sh"
 fi
