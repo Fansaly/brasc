@@ -13,6 +13,8 @@ function Get-Config {
       $Path = @{
         name = "Clash for Windows"
         app = "$installPath\Clash for Windows.exe"
+        coreName = "clash-win64"
+        coreApp = "$installPath\resources\static\files\win\x64\clash-win64.exe"
         install = $installPath
       }
 
