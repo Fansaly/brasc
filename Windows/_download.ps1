@@ -45,9 +45,6 @@ Write-Tips 'ÍøÒ×ÔÆÒôÀÖ'
 Write-Tips '°Ù¶ÈÍøÅÌ'
 . "${downloadsPath}\_BaiduNetdisk.ps1"
 
-Write-Tips 'Outline Manager'
-. "${downloadsPath}\_OutlineManager.ps1"
-
 Pop-Location
 
 Write-Host "`n  download to " -ForegroundColor Gray -NoNewLine
