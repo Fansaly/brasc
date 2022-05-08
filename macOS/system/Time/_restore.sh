@@ -1,18 +1,37 @@
 #!/bin/bash
 
 # time zone
-timezone=$(sudo systemsetup -gettimezone | sed -e 's/.*:[[:space:]]*\(.*\)/\1/')
+# timezone=$(sudo systemsetup -gettimezone | sed -e 's/.*:[[:space:]]*\(.*\)/\1/')
+timezone=$(ls -l /etc/localtime | sed -E 's/.*\/zoneinfo\/(.*)/\1/')
 
 if [[ "$timezone" != "Asia/Shanghai" ]]; then
   sudo systemsetup -settimezone Asia/Shanghai &>/dev/null
 fi
 
 # sync time
-switch=$(sudo systemsetup -getusingnetworktime | sed -e 's/.*:[[:space:]]*\(.*\)/\1/')
+# switch=$(sudo systemsetup -getusingnetworktime | sed -e 's/.*:[[:space:]]*\(.*\)/\1/')
+# if [[ ! "$switch" =~ [Oo]n ]]; then
+#   sudo systemsetup -setusingnetworktime on &>/dev/null
+# fi
 
-if [[ ! "$switch" =~ [Oo]n ]]; then
-  sudo systemsetup -setusingnetworktime on &>/dev/null
+# sync time
+server=time.apple.com
+server=time.pool.aliyun.com
+
+re="[+\-]?([0-9]+\.[0-9]+)[[:space:]]*[+/\-]+[[:space:]]*([0-9]+\.[0-9]+)[[:space:]]*([-_.a-zA-Z0-9]+)[[:space:]]*(.*)"
+rs=$(sntp $server 2>/dev/null | grep $server)
+
+offset=$(echo "$rs" | sed -E "s/$re/\1/")
+# delay=$(echo "$rs" | sed -E "s/$re/\2/")
+# server=$(echo "$rs" | sed -E "s/$re/\3/")
+# ip=$(echo "$rs" | sed -E "s/$re/\4/")
+
+awk 'BEGIN {code=('$offset' < 0.5) ? 0 : 1; exit} END {exit code}'
+
+if [[ $? -ne 0 ]]; then
+  sudo sntp -S $server >/dev/null 2>&1
 fi
+
 
 # show date and time in menu bar
 # see in ../SysMenuExtras
