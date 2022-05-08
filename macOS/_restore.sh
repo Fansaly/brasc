@@ -80,6 +80,10 @@ fi
 echo
 
 if [[ $F_COMMON == "true" ]]; then
+  ECHO "config" "Sublime Text"
+  source "$appsDIR/SublimeText/_restore.sh"
+
+
   ECHO "install" "oh-my-zsh"
   source "$unixDIR/oh-my-zsh/install.sh"
   OhMyZshCode=$?
@@ -91,10 +95,6 @@ if [[ $F_COMMON == "true" ]]; then
   # ECHO "install" "nodenv (nvm)"
   # source "$unixDIR/nodenv/install.sh"
   # [[ $? -eq 5 ]] && RESTART_SHELL=true
-
-
-  ECHO "config" "Sublime Text"
-  source "$appsDIR/SublimeText/_restore.sh"
 fi
 
 

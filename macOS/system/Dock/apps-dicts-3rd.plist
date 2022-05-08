@@ -20,7 +20,7 @@
             <key>file-label</key>
             <string>Google Chrome</string>
             <key>file-type</key>
-            <integer>41</integer>
+            <integer>1</integer>
         </dict>
         <key>tile-type</key>
         <string>file-tile</string>
@@ -30,7 +30,7 @@
         <key>tile-data</key>
         <dict>
             <key>bundle-identifier</key>
-            <string>com.sublimetext.3</string>
+            <string>com.sublimetext.4</string>
             <key>dock-extra</key>
             <false/>
             <key>file-data</key>
@@ -43,7 +43,7 @@
             <key>file-label</key>
             <string>Sublime Text</string>
             <key>file-type</key>
-            <integer>41</integer>
+            <integer>1</integer>
         </dict>
         <key>tile-type</key>
         <string>file-tile</string>

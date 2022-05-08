@@ -48,6 +48,29 @@
         <key>tile-type</key>
         <string>file-tile</string>
     </dict>
+    <key>Messages</key>
+    <dict>
+        <key>tile-data</key>
+        <dict>
+            <key>bundle-identifier</key>
+            <string>com.apple.MobileSMS</string>
+            <key>dock-extra</key>
+            <false/>
+            <key>file-data</key>
+            <dict>
+                <key>_CFURLString</key>
+                <string>file:///System/Applications/Messages.app/</string>
+                <key>_CFURLStringType</key>
+                <integer>15</integer>
+            </dict>
+            <key>file-label</key>
+            <string>Messages</string>
+            <key>file-type</key>
+            <integer>41</integer>
+        </dict>
+        <key>tile-type</key>
+        <string>file-tile</string>
+    </dict>
     <key>Mail</key>
     <dict>
         <key>tile-data</key>
@@ -65,52 +88,6 @@
             </dict>
             <key>file-label</key>
             <string>Mail</string>
-            <key>file-type</key>
-            <integer>41</integer>
-        </dict>
-        <key>tile-type</key>
-        <string>file-tile</string>
-    </dict>
-    <key>FaceTime</key>
-    <dict>
-        <key>tile-data</key>
-        <dict>
-            <key>bundle-identifier</key>
-            <string>com.apple.FaceTime</string>
-            <key>dock-extra</key>
-            <true/>
-            <key>file-data</key>
-            <dict>
-                <key>_CFURLString</key>
-                <string>file:///System/Applications/FaceTime.app/</string>
-                <key>_CFURLStringType</key>
-                <integer>15</integer>
-            </dict>
-            <key>file-label</key>
-            <string>FaceTime</string>
-            <key>file-type</key>
-            <integer>41</integer>
-        </dict>
-        <key>tile-type</key>
-        <string>file-tile</string>
-    </dict>
-    <key>Messages</key>
-    <dict>
-        <key>tile-data</key>
-        <dict>
-            <key>bundle-identifier</key>
-            <string>com.apple.iChat</string>
-            <key>dock-extra</key>
-            <true/>
-            <key>file-data</key>
-            <dict>
-                <key>_CFURLString</key>
-                <string>file:///System/Applications/Messages.app/</string>
-                <key>_CFURLStringType</key>
-                <integer>15</integer>
-            </dict>
-            <key>file-label</key>
-            <string>Messages</string>
             <key>file-type</key>
             <integer>41</integer>
         </dict>
@@ -163,23 +140,23 @@
         <key>tile-type</key>
         <string>file-tile</string>
     </dict>
-    <key>Contacts</key>
+    <key>FaceTime</key>
     <dict>
         <key>tile-data</key>
         <dict>
             <key>bundle-identifier</key>
-            <string>com.apple.AddressBook</string>
+            <string>com.apple.FaceTime</string>
             <key>dock-extra</key>
-            <false/>
+            <true/>
             <key>file-data</key>
             <dict>
                 <key>_CFURLString</key>
-                <string>file:///System/Applications/Contacts.app/</string>
+                <string>file:///System/Applications/FaceTime.app/</string>
                 <key>_CFURLStringType</key>
                 <integer>15</integer>
             </dict>
             <key>file-label</key>
-            <string>Contacts</string>
+            <string>FaceTime</string>
             <key>file-type</key>
             <integer>41</integer>
         </dict>
@@ -209,6 +186,29 @@
         <key>tile-type</key>
         <string>file-tile</string>
     </dict>
+    <key>Contacts</key>
+    <dict>
+        <key>tile-data</key>
+        <dict>
+            <key>bundle-identifier</key>
+            <string>com.apple.AddressBook</string>
+            <key>dock-extra</key>
+            <false/>
+            <key>file-data</key>
+            <dict>
+                <key>_CFURLString</key>
+                <string>file:///System/Applications/Contacts.app/</string>
+                <key>_CFURLStringType</key>
+                <integer>15</integer>
+            </dict>
+            <key>file-label</key>
+            <string>Contacts</string>
+            <key>file-type</key>
+            <integer>41</integer>
+        </dict>
+        <key>tile-type</key>
+        <string>file-tile</string>
+    </dict>
     <key>Reminders</key>
     <dict>
         <key>tile-data</key>
@@ -216,7 +216,7 @@
             <key>bundle-identifier</key>
             <string>com.apple.reminders</string>
             <key>dock-extra</key>
-            <true/>
+            <false/>
             <key>file-data</key>
             <dict>
                 <key>_CFURLString</key>
@@ -249,6 +249,29 @@
             </dict>
             <key>file-label</key>
             <string>Notes</string>
+            <key>file-type</key>
+            <integer>41</integer>
+        </dict>
+        <key>tile-type</key>
+        <string>file-tile</string>
+    </dict>
+    <key>TV</key>
+    <dict>
+        <key>tile-data</key>
+        <dict>
+            <key>bundle-identifier</key>
+            <string>com.apple.TV</string>
+            <key>dock-extra</key>
+            <false/>
+            <key>file-data</key>
+            <dict>
+                <key>_CFURLString</key>
+                <string>file:///System/Applications/TV.app/</string>
+                <key>_CFURLStringType</key>
+                <integer>15</integer>
+            </dict>
+            <key>file-label</key>
+            <string>Videos</string>
             <key>file-type</key>
             <integer>41</integer>
         </dict>
@@ -295,29 +318,6 @@
             </dict>
             <key>file-label</key>
             <string>Podcasts</string>
-            <key>file-type</key>
-            <integer>41</integer>
-        </dict>
-        <key>tile-type</key>
-        <string>file-tile</string>
-    </dict>
-    <key>TV</key>
-    <dict>
-        <key>tile-data</key>
-        <dict>
-            <key>bundle-identifier</key>
-            <string>com.apple.TV</string>
-            <key>dock-extra</key>
-            <false/>
-            <key>file-data</key>
-            <dict>
-                <key>_CFURLString</key>
-                <string>file:///System/Applications/TV.app/</string>
-                <key>_CFURLStringType</key>
-                <integer>15</integer>
-            </dict>
-            <key>file-label</key>
-            <string>Videos</string>
             <key>file-type</key>
             <integer>41</integer>
         </dict>
@@ -388,7 +388,7 @@
             <key>file-label</key>
             <string>Terminal</string>
             <key>file-type</key>
-            <integer>41</integer>
+            <integer>1</integer>
         </dict>
         <key>tile-type</key>
         <string>file-tile</string>
