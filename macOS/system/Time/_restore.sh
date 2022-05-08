@@ -1,18 +1,11 @@
 #!/bin/bash
 
 # time zone
-# timezone=$(sudo systemsetup -gettimezone | sed -e 's/.*:[[:space:]]*\(.*\)/\1/')
 timezone=$(ls -l /etc/localtime | sed -E 's/.*\/zoneinfo\/(.*)/\1/')
 
 if [[ "$timezone" != "Asia/Shanghai" ]]; then
   sudo systemsetup -settimezone Asia/Shanghai &>/dev/null
 fi
-
-# sync time
-# switch=$(sudo systemsetup -getusingnetworktime | sed -e 's/.*:[[:space:]]*\(.*\)/\1/')
-# if [[ ! "$switch" =~ [Oo]n ]]; then
-#   sudo systemsetup -setusingnetworktime on &>/dev/null
-# fi
 
 # sync time
 server=time.apple.com
@@ -29,7 +22,13 @@ offset=$(echo "$rs" | sed -E "s/$re/\1/")
 awk 'BEGIN {code=('$offset' < 0.5) ? 0 : 1; exit} END {exit code}'
 
 if [[ $? -ne 0 ]]; then
-  sudo sntp -S $server >/dev/null 2>&1
+  switch=$(sudo systemsetup -getusingnetworktime | sed -E 's/.*:[[:space:]]*(.*)/\1/')
+
+  if [[ "$switch" =~ ^[Oo]n$ ]]; then
+    sudo sntp -S $server >/dev/null 2>&1
+  else
+    sudo systemsetup -setusingnetworktime on &>/dev/null
+  fi
 fi
 
 
