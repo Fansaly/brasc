@@ -1,0 +1,15 @@
+# http://mirrors.163.com/.help/ubuntu.html
+deb http://mirrors.163.com/ubuntu/ CODENAME main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ CODENAME-security main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ CODENAME-updates main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ CODENAME-backports main restricted universe multiverse
+
+# 注释源码镜像，以提高 apt update 速度
+# deb-src http://mirrors.163.com/ubuntu/ CODENAME main restricted universe multiverse
+# deb-src http://mirrors.163.com/ubuntu/ CODENAME-security main restricted universe multiverse
+# deb-src http://mirrors.163.com/ubuntu/ CODENAME-updates main restricted universe multiverse
+# deb-src http://mirrors.163.com/ubuntu/ CODENAME-backports main restricted universe multiverse
+
+# 预发布软件源
+# deb http://mirrors.163.com/ubuntu/ CODENAME-proposed main restricted universe multiverse
+# deb-src http://mirrors.163.com/ubuntu/ CODENAME-proposed main restricted universe multiverse
