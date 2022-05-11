@@ -12,6 +12,32 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 PREFIX_BREW="/home/linuxbrew/.linuxbrew"
 if [[ -f "$PREFIX_BREW/bin/brew" ]]; then
   eval "$($PREFIX_BREW/bin/brew shellenv)"
+
+  # https://docs.brew.sh/Shell-Completion
+  CURRENT_SHELL=$(basename "$SHELL")
+
+  if [[ "$CURRENT_SHELL" == "bash" ]]; then
+    if [[ -r "$PREFIX_BREW/etc/profile.d/bash_completion.sh" ]]; then
+      source "$PREFIX_BREW/etc/profile.d/bash_completion.sh"
+    else
+      for COMPLETION in "$PREFIX_BREW/etc/bash_completion.d/"*; do
+        [[ -r "$COMPLETION" ]] && source "$COMPLETION"
+      done
+    fi
+
+  elif [[ "$CURRENT_SHELL" == "zsh" ]]; then
+    FPATH="$PREFIX_BREW/share/zsh/site-functions:$FPATH"
+
+    omz version &>/dev/null
+
+    if [[ $? -eq 0 ]]; then
+      rm -Rf ~/.zcompdump
+      compinit &>/dev/null
+    else
+      autoload -Uz compinit &>/dev/null
+      compinit &>/dev/null
+    fi
+  fi
 fi
 
 # nodenv
