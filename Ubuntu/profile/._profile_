@@ -28,15 +28,17 @@ if [[ -f "$PREFIX_BREW/bin/brew" ]]; then
   elif [[ "$CURRENT_SHELL" == "zsh" ]]; then
     FPATH="$PREFIX_BREW/share/zsh/site-functions:$FPATH"
 
-    omz version &>/dev/null
+    cat ~/.zcompdump | grep -E "'brew'" &>/dev/null || {
+      omz version &>/dev/null
 
-    if [[ $? -eq 0 ]]; then
-      rm -Rf ~/.zcompdump
-      compinit &>/dev/null
-    else
-      autoload -Uz compinit &>/dev/null
-      compinit &>/dev/null
-    fi
+      if [[ $? -eq 0 ]]; then
+        rm -Rf ~/.zcompdump
+        compinit &>/dev/null
+      else
+        autoload -Uz compinit &>/dev/null
+        compinit &>/dev/null
+      fi
+    }
   fi
 fi
 
