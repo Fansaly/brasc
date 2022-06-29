@@ -39,6 +39,9 @@ Push-Location -Path $downloadToPath
 Write-Tips 'Google Chrome'
 . "${downloadsPath}\_Chrome.ps1"
 
+Write-Tips 'Visual Studio Code'
+. "${downloadsPath}\_VSCode.ps1"
+
 Write-Tips 'Õ¯“◊‘∆“Ù¿÷'
 . "${downloadsPath}\_NeteaseMusic.ps1"
 

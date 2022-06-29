@@ -91,6 +91,9 @@ Write-Tips 'setting', 'Clash'
 Write-Tips 'setting', 'Sublime Text'
 . "${appsPath}\SublimeText\_restore.ps1"
 
+Write-Tips 'setting', 'Visual Studio Code'
+. "${appsPath}\VSCode\_restore.ps1"
+
 Write-Tips 'setting', '7-Zip'
 . "${appsPath}\7-Zip\_restore.ps1"
 

@@ -45,3 +45,6 @@ Write-Tips 'Windows Terminal'
 # apps configuration
 Write-Tips 'Sublime Text'
 . "${appsPath}\SublimeText\_backup.ps1"
+
+Write-Tips 'Visual Studio Code'
+. "${appsPath}\VSCode\_backup.ps1"
