@@ -6,6 +6,7 @@ $PSScriptsPath = (Get-Item -Path $ScriptFilePath).Parent.Parent.FullName + '\.PS
 . "${PSScriptsPath}\Confirm-YesOrNo.ps1"
 . "${PSScriptsPath}\Get-DisplayInfo.ps1"
 . "${PSScriptsPath}\Get-UIPlacement.ps1"
+. "${PSScriptsPath}\Set-Registry.ps1"
 . "${PSScriptsPath}\Merge-Object.ps1"
 . "${ScriptFilePath}\Get-Size.ps1"
 
@@ -63,40 +64,17 @@ function Get-MainWindowPlacement {
   return $Placement
 }
 
-function Set-WinRARSetting {
-  Param (
-    [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
-    [string]
-    $Path = '',
-    [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
-    [object]
-    $Data
-  )
-
-  if ($Data -isnot [hashtable] -and $Data -isnot [array]) { return }
-
-  if ($Data -is [array]) {
-    $Type  = $Data[0]
-    $Value = $Data[1]
-    $Name  = $Path | Split-Path -Leaf
-    $Path  = $Path | Split-Path
-
-    if ($Data.Count -gt 2) {
-      $Method = $Data[2]
-      $Value += Get-MainWindowPlacement
-    }
-
-    if (!(Test-Path -Path $Path)) {
-      New-Item -Path $Path | Out-Null
-    }
-
-    Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value
-  } else {
-    $Data.Keys | ForEach-Object {
-      Set-WinRARSetting -Data $Data.$_ -Path "$Path\$_"
-    }
-  }
-}
 
 # setting WinRAR
-Set-WinRARSetting -Path $config.RegPath -Data $config.Settings
+Set-Registry -Path $config.RegPath -Data $config.Settings -CallBack {
+  Param ([object]$Data)
+
+  $Value = $Data[1]
+
+  if ($Data.Count -gt 2) {
+    $Method = $Data[2]
+    $Value += Get-MainWindowPlacement
+  }
+
+  return $Value
+}

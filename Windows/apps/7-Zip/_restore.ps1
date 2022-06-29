@@ -6,6 +6,7 @@ $PSScriptsPath = (Get-Item -Path $ScriptFilePath).Parent.Parent.FullName + '\.PS
 . "${PSScriptsPath}\Confirm-YesOrNo.ps1"
 . "${PSScriptsPath}\Get-DisplayInfo.ps1"
 . "${PSScriptsPath}\Get-UIPlacement.ps1"
+. "${PSScriptsPath}\Set-Registry.ps1"
 . "${ScriptFilePath}\Get-Size.ps1"
 
 
@@ -64,39 +65,16 @@ function Set-7zFMPlacement {
   Set-ItemProperty -Path $Path7zFM -Name 'Position' -Type 'Binary' -Value $Placement
 }
 
-function Set-7zSetting {
-  Param (
-    [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
-    [string]
-    $Path = '',
-    [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
-    [object]
-    $Data
-  )
-
-  if ($Data -isnot [hashtable] -and $Data -isnot [array]) { return }
-
-  if ($Data -is [array]) {
-    $Type  = $Data[0]
-    $Value = $Data[1]
-    $Name  = $Path | Split-Path -Leaf
-    $Path  = $Path | Split-Path
-
-    if ($Value -is [array]) {
-      $Value = $Value | % -Begin { $sum = 0 } -Process { $sum += $_ } -End { $sum; Remove-Variable sum }
-    }
-
-    if (!(Test-Path -Path $Path)) {
-      New-Item -Path $Path | Out-Null
-    }
-
-    Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value
-  } else {
-    $Data.Keys | ForEach-Object {
-      Set-7zSetting -Data $Data.$_ -Path "$Path\$_"
-    }
-  }
-}
 
 Set-7zFMPlacement
-Set-7zSetting -Path $config.RegPath -Data $config.Settings
+Set-Registry -Path $config.RegPath -Data $config.Settings -CallBack {
+  Param ([object]$Data)
+
+  $Value = $Data[1]
+
+  if ($Value -is [array]) {
+    $Value = $Value | % -Begin { $sum = 0 } -Process { $sum += $_ } -End { $sum; Remove-Variable sum }
+  }
+
+  return $Value
+}
