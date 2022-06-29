@@ -78,6 +78,22 @@ Settings = @{
     # 0 => 否
     # 1 => 是
     TaskbarSmallIcons = @('DWord', 0)
+
+    # 个性化 → 开始
+    # 在“开始”、“跳转列表”和“文件资源管理器”中显示最近打开的项目
+    # 0 => 关
+    # 1 => 开
+    Start_TrackDocs = @('DWord', 0)
+
+    # 个性化 → 任务栏
+    # 小组件
+    # 0 => 关
+    # 1 => 开
+    TaskbarDa = @('DWord', 0)
+    # 聊天
+    # 0 => 关
+    # 1 => 开
+    TaskbarMn = @('DWord', 0)
   }
 
   Modules = @{
