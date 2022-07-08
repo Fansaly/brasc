@@ -35,6 +35,11 @@ Settings = @{
     # 0 => 关闭
     # 1 => 开启
     IsDeviceSearchHistoryEnabled = @('DWord', 0)
+
+    # 更多设置(显示搜索要点)
+    # 0 => 关闭
+    # 1 => 开启
+    IsDynamicSearchBoxEnabled = @('DWord', 0)
   }
 }
 
