@@ -44,8 +44,8 @@ Write-Tips 'setting', 'partition DriveLetter and Volume'
 Write-Tips 'create', 'applications shortcut'
 . "${systemPath}\CreateShortcut\_restore.ps1"
 
-Write-Tips 'setting', 'Taskbar'
-. "${systemPath}\Taskbar\_restore.ps1" -NoRestart
+Write-Tips 'setting', 'Settings'
+. "${systemPath}\Settings\_restore.ps1" -NoRestart
 
 Write-Tips 'setting', 'Desktop Icons'
 . "${systemPath}\DesktopIcons\_restore.ps1" -NoRestart

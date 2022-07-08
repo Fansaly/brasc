@@ -15,7 +15,7 @@ $PSScriptsPath = (Get-Item -Path $ScriptFilePath).Parent.Parent.FullName + '\.PS
 $configFile = "${ScriptFilePath}\config.psd1"
 
 if (![IO.File]::Exists($configFile)) {
-  Write-Message "``Taskbar' config file doesn't exist."
+  Write-Message "``Settings' config file doesn't exist."
   exit
 }
 

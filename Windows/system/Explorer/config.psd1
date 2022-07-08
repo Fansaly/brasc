@@ -32,13 +32,8 @@ UI = @{
   }
 }
 
-# Windows Explorer and Taskbar
 RegPath = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer'
 Settings = @{
-  # 通知区域始终显示所有图标
-  # 0 => 是
-  # 1 => 否
-  EnableAutoTray = @('DWord', 1)
   # “快速访问”中显示常用文件夹
   # 0 => 是
   # 1 => 否
@@ -49,10 +44,10 @@ Settings = @{
   ShowRecent = @('DWord', 0)
 
   Advanced = @{
-    # 速览桌面
-    # 0 => 开启
-    # 1 => 关闭
-    DisablePreviewDesktop = @('DWord', 0)
+    # 打开“资源管理器”时打开
+    # 1 => 此电脑
+    # 2 => 快速访问
+    LaunchTo = @('DWord', 1)
     # 隐藏的文件、文件夹
     # 1 => 显示
     # 2 => 隐藏
@@ -61,39 +56,6 @@ Settings = @{
     # 0 => 显示
     # 1 => 隐藏
     HideFileExt = @('DWord', 0)
-    # 打开“资源管理器”时打开
-    # 1 => 此电脑
-    # 2 => 快速访问
-    LaunchTo = @('DWord', 1)
-    # 合并任务栏按钮
-    # 0 => 始终合并按钮
-    # 1 => 任务栏已满时
-    # 2 => 从不
-    TaskbarGlomLevel = @('DWord', 0)
-    # 锁定任务栏
-    # 0 => 锁定
-    # 1 => 不锁定
-    TaskbarSizeMove = @('DWord', 0)
-    # 小任务栏图标
-    # 0 => 否
-    # 1 => 是
-    TaskbarSmallIcons = @('DWord', 0)
-
-    # 个性化 → 开始
-    # 在“开始”、“跳转列表”和“文件资源管理器”中显示最近打开的项目
-    # 0 => 关
-    # 1 => 开
-    Start_TrackDocs = @('DWord', 0)
-
-    # 个性化 → 任务栏
-    # 小组件
-    # 0 => 关
-    # 1 => 开
-    TaskbarDa = @('DWord', 0)
-    # 聊天
-    # 0 => 关
-    # 1 => 开
-    TaskbarMn = @('DWord', 0)
   }
 
   Modules = @{
@@ -132,6 +94,7 @@ Settings = @{
     }
   }
 
+  # Windows 10 and below
   Ribbon = @{
     # 功能区
     # 0 => 展开
