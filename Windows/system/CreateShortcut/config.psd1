@@ -26,6 +26,18 @@
       )
     },
     @{
+      Name = 'HBuilderX'
+      Path = @(
+        'D:\Applications\HBuilderX\HBuilderX.exe'
+      )
+    },
+    @{
+      Name = 'Telegram'
+      Path = @(
+        'D:\Applications\Telegram\Telegram.exe'
+      )
+    },
+    @{
       Name = 'н╒пе'
       Path = @(
         'C:\Program Files (x86)\Tencent\WeChat\WeChat.exe',
