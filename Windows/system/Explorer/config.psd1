@@ -34,19 +34,27 @@ UI = @{
 
 RegPath = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer'
 Settings = @{
-  # “快速访问”中显示常用文件夹
-  # 0 => 是
-  # 1 => 否
-  ShowFrequent = @('DWord', 0)
-  # “快速访问”中显示最近使用的文件
-  # 0 => 是
-  # 1 => 否
+  # 隐私
+  # --------------------------
+  # 显示最近使用的文件
+  # 0 => 隐藏
+  # 1 => 显示
   ShowRecent = @('DWord', 0)
+  # 显示常用文件夹
+  # 0 => 隐藏
+  # 1 => 显示
+  ShowFrequent = @('DWord', 0)
+  # 显示来自 Office.com 的文件
+  # 0 => 隐藏
+  # 1 => 显示
+  ShowCloudFilesInQuickAccess = @('DWord', 0)
 
   Advanced = @{
     # 打开“资源管理器”时打开
     # 1 => 此电脑
-    # 2 => 快速访问
+    # 2 => 主文件夹 / 快速访问
+    # 3 => Downloads
+    # 4 => OneDrive
     LaunchTo = @('DWord', 1)
     # 隐藏的文件、文件夹
     # 1 => 显示
