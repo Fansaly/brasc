@@ -1,5 +1,13 @@
 {
 	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Palenight.tmTheme",
+	"theme": "Material-Theme-Palenight.sublime-theme",
+	"font_face": "Microsoft YaHei Mono",
+	"font_size": 13,
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"auto_complete": true,
+	"themed_title_bar": false,
+	"open_files_in_new_window": false,
 	"folder_exclude_patterns":
 	[
 		".svn",
@@ -10,13 +18,6 @@
 		".Trash-*",
 		"node_modules",
 	],
-	"font_face": "Microsoft YaHei Mono",
-	"font_size": 13,
-	"open_files_in_new_window": false,
-	"tab_size": 2,
-	"theme": "Material-Theme-Palenight.sublime-theme",
-	"translate_tabs_to_spaces": true,
-	"auto_complete": true,
 	"ignored_packages":
 	[
 		"Vintage",
