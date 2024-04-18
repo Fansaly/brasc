@@ -17,6 +17,7 @@ $config.Programs | % {
   $Path = $_.Path
   $Name = $_.Name
   $Location = $_.Location
+  $Arguments = $_.Arguments
 
   if ([String]::IsNullOrEmpty($Location) -or !(Test-Path -Path $Location)) {
     $Location = $LinkLocation
@@ -24,7 +25,7 @@ $config.Programs | % {
 
   $Path | % {
     if ([IO.File]::Exists([Environment]::ExpandEnvironmentVariables($_))) {
-      New-Shortcut -Path $_ -Location $Location -Name $Name
+      New-Shortcut -Path $_ -Location $Location -Name $Name -Arguments $Arguments
       return
     }
   }
