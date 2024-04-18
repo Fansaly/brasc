@@ -21,6 +21,10 @@ Settings = @{
             # 0 => 关
             # 1 => 开
             Start_TrackDocs = @('DWord', 0)
+            # 个性化 → 任务栏 → Copilot
+            # 0 => 关
+            # 1 => 开
+            ShowCopilotButton = @('DWord', 0)
             # 个性化 → 任务栏 → 小组件
             # 0 => 关
             # 1 => 开
