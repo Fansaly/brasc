@@ -37,6 +37,17 @@
       )
     },
     @{
+      Name = 'Postman'
+      Path = @(
+        'D:\Applications\Postman\Postman.exe'
+      )
+      Location = '$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Postman'
+    },
+    @{
+      Name = 'DBeaver'
+      Path = 'D:\Applications\dbeaver\dbeaver.exe'
+    },
+    @{
       Name = 'Internet Explorer'
       Path = @(
         '%ProgramFiles(x86)%\Internet Explorer\iexplore.exe'

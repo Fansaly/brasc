@@ -19,8 +19,14 @@ $config.Programs | % {
   $Location = $_.Location
   $Arguments = $_.Arguments
 
-  if ([String]::IsNullOrEmpty($Location) -or !(Test-Path -Path $Location)) {
+  if ([String]::IsNullOrEmpty($Location)) {
     $Location = $LinkLocation
+  } else {
+    $Location = $Location -ireplace '\$env:APPDATA',$env:APPDATA
+
+    if (!(Test-Path -Path $Location)) {
+      New-Item -ItemType Directory -Path $Location -Force | Out-Null
+    }
   }
 
   $Path | % {
