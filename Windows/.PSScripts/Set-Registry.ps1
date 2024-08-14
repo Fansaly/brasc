@@ -29,7 +29,13 @@ function Set-Registry {
       New-Item -Path $Path -Force | Out-Null
     }
 
-    Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value
+    Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value -ErrorAction Ignore
+
+    if ($? -eq $False) {
+      Write-Host "`n`t ERROR: $Path" -ForegroundColor Red -NoNewline
+      Write-Host " -> " -ForegroundColor Gray -NoNewline
+      Write-Host "$Name" -ForegroundColor Red -NoNewline
+    }
   } else {
     $Data.Keys | % {
       Set-Registry -Data $Data.$_ -Path "$Path\$_" -CallBack $CallBack
