@@ -56,6 +56,10 @@ Settings = @{
     # 3 => Downloads
     # 4 => OneDrive
     LaunchTo = @('DWord', 1)
+    # 使用复选框以选择项
+    # 0 => 禁用
+    # 1 => 启用
+    AutoCheckSelect = @('DWord', 0)
     # 隐藏的文件、文件夹
     # 1 => 显示
     # 2 => 隐藏

@@ -35,6 +35,10 @@ function Set-ExplorerPlacement {
   $UIPlacement = Get-UIPlacement -DisplayInfo $DisplayInfo -UISizes $UI.Sizes
   $Pos = "Pos$($DisplayInfo.Resolution)x$($DisplayInfo.PixelsPerInch)(1)"
 
+  if (!(Test-Path -Path $UI.RegPath)) {
+    New-Item -Path $UI.RegPath -ItemType Directory -Force | Out-Null
+  }
+
   Set-ItemProperty -Path $UI.RegPath -Type 'DWord' -Name "Win${Pos}.bottom" -Value $UIPlacement.Bottom
   Set-ItemProperty -Path $UI.RegPath -Type 'DWord' -Name "Win${Pos}.left"   -Value $UIPlacement.Left
   Set-ItemProperty -Path $UI.RegPath -Type 'DWord' -Name "Win${Pos}.right"  -Value $UIPlacement.Right
