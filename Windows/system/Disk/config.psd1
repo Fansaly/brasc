@@ -1,6 +1,6 @@
 ﻿@{
 
-XiaoXinPro = @(
+YOGAPro = @(
   @{
     DiskNumber      = 0
     PartitionNumber = 4

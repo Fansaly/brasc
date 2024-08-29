@@ -6,7 +6,7 @@ if (!$(Get-PermissionStatus)) { exit }
 
 
 $names = @{
-  '{28c6c309-dffb-4ebb-b053-319479331354}' = 'XiaoXinPro'
+  '{74d92ec2-e06d-4957-a9e8-7aa1b0b1a904}' = 'YOGAPro'
 }
 
 $computerActiveName = Get-ItemPropertyValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Computername\ActiveComputerName' -Name 'Computername'
@@ -21,11 +21,13 @@ Get-Disk | Where-Object 'IsBoot' -EQ 'True' | Select-Object 'Guid' | % {
     if ($name -ne $computerName) {
       Rename-Computer -NewName $name -WarningAction 'SilentlyContinue'
 
-      Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
-      Write-Host "$computerActiveName" -ForegroundColor DarkCyan -NoNewLine
-      Write-Host " -> " -ForegroundColor Gray -NoNewLine
-      Write-Host "$name" -ForegroundColor DarkCyan -NoNewLine
-      Write-Host " take effect after reboot computer" -ForegroundColor Yellow
+      if ($? -eq $True) {
+        Write-Host "`n  - " -ForegroundColor Gray -NoNewLine
+        Write-Host "$computerActiveName" -ForegroundColor DarkCyan -NoNewLine
+        Write-Host " -> " -ForegroundColor Gray -NoNewLine
+        Write-Host "$name" -ForegroundColor DarkCyan -NoNewLine
+        Write-Host " take effect after reboot computer" -ForegroundColor Yellow
+      }
     }
   }
 }
