@@ -7,23 +7,24 @@
 apps=(
   "Launchpad"
   "Safari"
+  "Messages"
   # "Mail"
   # "Maps"
   "Photos"
-  "Messages"
   "FaceTime"
   "Calendar"
   # "Contacts"
   "Reminders"
   "Notes"
+  # "Freeform"
+  # "Videos"
   # "Music"
-  # "TV"
   # "Podcasts"
   "App Store"
-  "System Preferences"
+  "System Settings"
+  "Google Chrome"
   "Terminal"
   "Sublime Text"
-  "Google Chrome"
 )
 
 currentDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)

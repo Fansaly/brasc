@@ -36,7 +36,7 @@
             <key>file-data</key>
             <dict>
                 <key>_CFURLString</key>
-                <string>file:///Applications/Safari.app/</string>
+                <string>file:///System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/</string>
                 <key>_CFURLStringType</key>
                 <integer>15</integer>
             </dict>
@@ -255,7 +255,30 @@
         <key>tile-type</key>
         <string>file-tile</string>
     </dict>
-    <key>TV</key>
+    <key>Freeform</key>
+    <dict>
+        <key>tile-data</key>
+        <dict>
+            <key>bundle-identifier</key>
+            <string>com.apple.freeform</string>
+            <key>dock-extra</key>
+            <false/>
+            <key>file-data</key>
+            <dict>
+                <key>_CFURLString</key>
+                <string>file:///System/Applications/Freeform.app/</string>
+                <key>_CFURLStringType</key>
+                <integer>15</integer>
+            </dict>
+            <key>file-label</key>
+            <string>Freeform</string>
+            <key>file-type</key>
+            <integer>41</integer>
+        </dict>
+        <key>tile-type</key>
+        <string>file-tile</string>
+    </dict>
+    <key>Videos</key>
     <dict>
         <key>tile-data</key>
         <dict>
@@ -347,7 +370,7 @@
         <key>tile-type</key>
         <string>file-tile</string>
     </dict>
-    <key>System Preferences</key>
+    <key>System Settings</key>
     <dict>
         <key>tile-data</key>
         <dict>
@@ -358,12 +381,12 @@
             <key>file-data</key>
             <dict>
                 <key>_CFURLString</key>
-                <string>file:///System/Applications/System%20Preferences.app/</string>
+                <string>file:///System/Applications/System%20Settings.app/</string>
                 <key>_CFURLStringType</key>
                 <integer>15</integer>
             </dict>
             <key>file-label</key>
-            <string>System Preferences</string>
+            <string>System Settings</string>
             <key>file-type</key>
             <integer>41</integer>
         </dict>
