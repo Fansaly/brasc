@@ -19,7 +19,7 @@ offset=$(echo "$rs" | sed -E "s/$re/\1/")
 # server=$(echo "$rs" | sed -E "s/$re/\3/")
 # ip=$(echo "$rs" | sed -E "s/$re/\4/")
 
-awk 'BEGIN {code=('$offset' < 0.5) ? 0 : 1; exit} END {exit code}'
+awk 'BEGIN {code=('$offset' < 0.5) ? 0 : 1; exit} END {exit code}' >/dev/null 2>&1
 
 if [[ $? -ne 0 ]]; then
   switch=$(sudo systemsetup -getusingnetworktime | sed -E 's/.*:[[:space:]]*(.*)/\1/')
