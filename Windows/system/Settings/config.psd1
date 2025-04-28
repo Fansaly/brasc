@@ -1,4 +1,7 @@
 ﻿@{
+Items = @(
+
+@{
 
 RegPath = 'HKCU:\Software'
 
@@ -114,4 +117,26 @@ Settings = @{
   }
 }
 
+},
+
+@{
+
+RegPath = 'HKLM:\SOFTWARE'
+
+Settings = @{
+  Policies = @{
+    Microsoft = @{
+      Dsh = @{
+        # 个性化 → 任务栏 → 小组件
+        # 0 => 禁用
+        # 1 => 启用
+        AllowNewsAndInterests = @('DWord', 0)
+      }
+    }
+  }
+}
+
+}
+
+)
 }

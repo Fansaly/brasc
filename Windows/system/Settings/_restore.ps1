@@ -22,7 +22,9 @@ if (![IO.File]::Exists($configFile)) {
 $config = Import-PowerShellDataFile $configFile
 
 
-Set-Registry -Path $config.RegPath -Data $config.Settings
+$config.Items | % {
+  Set-Registry -Path $_.RegPath -Data $_.Settings
+}
 
 if (!$NoRestart) {
   Stop-Process -Name 'explorer'
