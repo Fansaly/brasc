@@ -8,7 +8,7 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
 
-    "defaultProfile": "{acbafd15-cbbb-5bb3-8a61-bed446ff4b83}",
+    "defaultProfile": "{d8e96812-b789-5068-a5ae-10b2fb53e95f}",
 
     // You can add more global application settings here.
     // To learn more about global settings, visit https://aka.ms/terminal-global-settings
@@ -41,8 +41,8 @@
         "list":
         [
             {
-                "guid": "{acbafd15-cbbb-5bb3-8a61-bed446ff4b83}",
-                "name": "Ubuntu 24.04 LTS",
+                "guid": "{d8e96812-b789-5068-a5ae-10b2fb53e95f}",
+                "name": "Ubuntu 24.04.1 LTS",
                 "source": "CanonicalGroupLimited.Ubuntu24.04LTS_79rhkp1fndgsc",
                 "hidden": false
             },
